@@ -1,4 +1,5 @@
 const axios= require('axios')
+const moment=require('moment')
 
 module.exports={
     getStatesDaily:async(req,res)=>{
@@ -14,7 +15,7 @@ module.exports={
             console.log('Fetching data...')
             await axios.get('https://covidtracking.com/api/states/daily')
              .then(res=>{
-                 req.session.statesDaily=res.data
+                 req.session.statesDaily=res.data.map(e=>({...e,"date":moment(e["date"],['YYYYMMDD']).format("yyyy-MM-DD")}))
                 })
                 .catch(e=>console.log(e))                
                 return res.status(200).send(req.session.statesDaily)
