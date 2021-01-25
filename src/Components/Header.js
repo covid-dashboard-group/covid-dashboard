@@ -1,10 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const Header = (props) => {
-  
+
   return (
     <div>
-      Header.js
+      <Container className='Header'>
+          COVID-19 Dashboard
+      </Container>
     </div>
   )
 }
