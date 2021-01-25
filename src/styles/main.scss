@@ -1,0 +1,14 @@
+@import './base-scss/reset';
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@import './base-scss/App';
+
+@import './components-scss/articles';
+@import './components-scss/data';
+@import './components-scss/header';
+@import './components-scss/mapContainer';
+@import './components-scss/newsContainer';
+@import './components-scss/stateData';
+@import './components-scss/twitterContainer';
+@import './components-scss/usData';
