@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-const Header = (props) => {
-
+const USData = (props) => {
+  
   return (
     <div>
-      <Container className='Header' fluid>
-          COVID-19 Dashboard
+      <Container>
+        USData.js
       </Container>
     </div>
   )
 }
 
-export default Header
+export default USData
