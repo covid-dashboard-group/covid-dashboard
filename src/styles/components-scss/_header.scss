@@ -1,2 +1,17 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
+
+.Header {
+  
+}
+
+.logo {
+  height: 10vh;
+  
+}
+
+.header-icon-infections {
+  height: 10vh;
+  border-radius: 10px;
+  background-image: url('../../assets/1.png');
+}
