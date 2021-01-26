@@ -1,12 +1,12 @@
 import React from 'react'
 
-const USData = (props) => {
+const Twitter = (props) => {
   
   return (
     <div>
-      USData.js
+      Twitter.js
     </div>
   )
 }
 
-export default USData
+export default Twitter
