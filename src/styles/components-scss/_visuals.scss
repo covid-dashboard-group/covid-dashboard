@@ -1,7 +1,7 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.USData, .StateData {
+.Map, .Graph {
   border: 1px black solid;
   height: $sectionHeight;
   margin-bottom: $componentMargin;

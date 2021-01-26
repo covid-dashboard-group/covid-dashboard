@@ -1,14 +1,18 @@
 import React from 'react'
-import USData from './USData'
-import StateData from './StateData'
+import USData from './DataComponent/USData'
+import StateData from './DataComponent/StateData'
+import { Container } from 'react-bootstrap'
 
 const Data = (props) => {
   
   return (
     <div>
-      Data.js
-      <USData />
-      <StateData />
+      <Container className='USData'>
+        <USData />
+      </Container>
+      <Container className='StateData'>
+        <StateData />
+      </Container>
     </div>
   )
 }

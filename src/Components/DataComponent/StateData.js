@@ -1,10 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const StateData = (props) => {
   
   return (
     <div>
-      StateData.js
+      <Container>
+        StateData.js
+      </Container>
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { ReactComponent as DashboardLogo } from '../assets/DashboardLogo.svg'
+import { Navbar } from 'react-bootstrap'
 
 const Header = (props) => {
 
   return (
     <div>
-      <Container className='Header'>
-          COVID-19 Dashboard
-      </Container>
+      <Navbar className='Header'>
+          <Navbar.Brand className='logo'>
+            <DashboardLogo />
+          </Navbar.Brand>
+      </Navbar>
     </div>
   )
 }
