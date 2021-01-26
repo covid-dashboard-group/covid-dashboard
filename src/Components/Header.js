@@ -5,7 +5,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <Container className='Header'>
+      <Container className='Header' fluid>
           COVID-19 Dashboard
       </Container>
     </div>

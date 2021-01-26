@@ -1,18 +1,27 @@
 import React from 'react'
 import Header from './Components/Header'
-import MapContainer from './Components/MapContainer'
 import Data from './Components/Data'
-import TwitterContainer from './Components/TwitterContainer'
-import NewsContainer from './Components/NewsContainer'
+import Visuals from './Components/Visuals'
+import Media from './Components/Media'
+import { Container, Col, Row } from 'react-bootstrap'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <MapContainer />
-      <Data />
-      <TwitterContainer />
-      <NewsContainer />
+      <Container className='display'>
+        <Row>
+          <Col md={3}>
+            <Data className='Data'/>
+          </Col>
+          <Col md={6}>
+            <Visuals className='Visuals'/>
+          </Col>
+          <Col md={3}>
+            <Media className='Media'/>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
