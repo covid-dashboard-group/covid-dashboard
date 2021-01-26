@@ -4,13 +4,16 @@
 
 @import './base-scss/App';
 
-@import './components-scss/articles';
-@import './components-scss/data';
-@import './components-scss/graph';
-@import './components-scss/header';
-@import './components-scss/map';
-@import './components-scss/media';
-@import './components-scss/stateData';
-@import './components-scss/twitter';
-@import './components-scss/usData';
-@import './components-scss/visuals';
+@import '../styles/components-scss/header';
+
+@import '../styles/components-scss/data';
+@import '../styles/components-scss/dataComponent-scss/stateData';
+@import '../styles/components-scss/dataComponent-scss/usData';
+
+@import '../styles/components-scss/media';
+@import '../styles/components-scss/mediaComponent-scss/articles';
+@import '../styles/components-scss/mediaComponent-scss/twitter';
+
+@import '../styles/components-scss/visuals';
+@import '../styles/components-scss/visualsComponent-scss/graph';
+@import '../styles/components-scss/visualsComponent-scss/map';

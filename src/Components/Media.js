@@ -1,14 +1,18 @@
 import React from 'react'
-import TwitterContainer from './Twitter'
-import Articles from './Articles'
+import Twitter from './MediaComponent/Twitter'
+import Articles from './MediaComponent/Articles'
+import { Container } from 'react-bootstrap'
 
 const Media = (props) => {
 
   return (
     <div>
-      Media.js
-      <Articles />
-      <TwitterContainer />
+      <Container className='Articles'>
+        <Articles />
+      </Container>
+      <Container className='Twitter'>
+        <Twitter />
+      </Container>
     </div>
   )
 }

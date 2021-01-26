@@ -1,10 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const USData = (props) => {
   
   return (
     <div>
-      USData.js
+      <Container>
+        USData.js
+      </Container>
     </div>
   )
 }

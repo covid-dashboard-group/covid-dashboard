@@ -1,6 +1,8 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.Data {
-  background-color: rgba(255, 0, 0, 0.541);
+.USData, .StateData {
+  border: 1px black solid;
+  height: $sectionHeight;
+  margin-bottom: $componentMargin;
 }

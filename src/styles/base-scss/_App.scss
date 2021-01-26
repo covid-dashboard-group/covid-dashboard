@@ -4,18 +4,14 @@
 .App {
   text-align: center;
   font-family: $globalFontFamily;
+  height: 100vh;
+  width: 100vw;
 }
 
 .Header {
-  background-color: rgba(0, 0, 255, 0.527);
+  height: 8vh;
 }
 
-
-
-.Visuals {
-  background-color: rgba(0, 128, 0, 0.534);
-}
-
-.Media {
-  background-color: rgba(128, 0, 128, 0.541);
+.Data, .Visuals, .Media {
+  height: $componentHeight;
 }

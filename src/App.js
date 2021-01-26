@@ -9,16 +9,16 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Container className='display'>
+      <Container className='display' fluid>
         <Row>
-          <Col md={3}>
-            <Data className='Data'/>
+          <Col xs={12} md={3} className='Data'>
+            <Data />
           </Col>
-          <Col md={6}>
-            <Visuals className='Visuals'/>
+          <Col xs={12} md={6} className='Visuals'>
+            <Visuals />
           </Col>
-          <Col md={3}>
-            <Media className='Media'/>
+          <Col xs={12} md={3} className='Media'>
+            <Media />
           </Col>
         </Row>
       </Container>

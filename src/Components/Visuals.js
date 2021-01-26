@@ -1,15 +1,18 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import Map from './Map'
-import Graph from './Graph'
+import Map from './VisualsComponent/Map'
+import Graph from './VisualsComponent/Graph'
 
 const Visuals = (props) => {
 
   return (
     <div>
-      Visuals.js
-      <Map />
-      <Graph />
+      <Container className='Map'>
+        <Map />
+      </Container>
+      <Container className='Graph'>
+        <Graph />
+      </Container>
     </div>
   )
 }
