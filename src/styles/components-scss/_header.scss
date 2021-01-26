@@ -1,17 +1,64 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.Header {
-  
+.brand {
+  display: flex;
+  // background-color: blue;
 }
 
 .logo {
   height: 10vh;
-  
+}
+
+.brand-text {
+  // background-color: red;
+}
+
+.header-white-space {
+  // background-color: green;
 }
 
 .header-icon-infections {
-  height: 10vh;
+  // height: 10vh;
   border-radius: 10px;
-  background-image: url('../../assets/1.png');
+  background-image: url('../assets/1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  // background-color: orange;
+
+  display: flex;
+  align-items: flex-end;
+  
+  .header-text-infections {
+    color: white;
+    margin: 0;
+  }
+}
+
+
+.header-icon-deaths {
+  // height: 10vh;
+  border-radius: 10px;
+  background-image: url('../assets/2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  // background-color: purple;
+  
+  .header-text-deaths {
+    color: white;
+  }
+}
+
+
+.header-icon-vaccinations {
+  // height: 10vh;
+  border-radius: 10px;
+  background-image: url('../assets/3.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  // background-color: teal;
+  
+  .header-text-vaccinations {
+    color: white;
+  }
 }
