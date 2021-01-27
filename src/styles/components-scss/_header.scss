@@ -4,38 +4,60 @@
 @mixin header-styling {
   height: 8vh;
   border-radius: 10px;
-  background-size: contain;
+  background-size: 300px 8vh;
   background-repeat: no-repeat;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
 
   .header-icon-text {
     color: white;
   }
 }
 
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.brand-logo {
+  display: flex;
+  align-items: center;
+  
+}
 
 .logo {
   height: 10vh;
+  width: auto;
 }
 
-.brand-text {
+.header-national-title {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  font-size: 24px;
+  background-color: green;
+  font-weight: 700;
+  line-height: 14px;
 }
 
 .header-icon-infections {
-  background-image: url('../assets/1.svg');
+  // background-image: url('../assets/1.svg');
   @include header-styling();
+
+  background: linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
 }
 
 .header-icon-deaths {
-  background-image: url('../assets/2.svg');
+  // background-image: url('../assets/2.svg');
   @include header-styling();
+
+  background: linear-gradient(45deg, hsla(1, 92%, 47%, 1) 17%, hsla(328, 100%, 58%, 1) 100%);
 }
 
 .header-icon-vaccinations {
-  background-image: url('../assets/3.svg');
+  // background-image: url('../assets/3.svg');
   @include header-styling();
+
+  background: linear-gradient(45deg, hsla(175, 79%, 63%, 1) 0%, hsla(82, 96%, 57%, 1) 100%);
 }
