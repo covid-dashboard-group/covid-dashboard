@@ -11,14 +11,16 @@ app.use(
         resave:false,
         saveUninitialized:true,
         secret:SESSION_SECRET,
-        cookie:{maxAge:1000*60*60}
+        cookie:{maxAge:1000*60}
     })
 )
 
 
 
-//Main controller using the Covid Tracking Project API 
-app.get(`/api/statesDaily`, covidCtrl.getStatesDaily)
+//Main controller using the Covid Tracking Project API
+app.get(`/api/daily/national`, covidCtrl.getNationalDaily) 
+app.get(`/api/daily/states`, covidCtrl.getStatesDaily)
+
 
 app.listen(SERVER_PORT, ()=>{
     console.log(`Serving on port ${SERVER_PORT}`)
