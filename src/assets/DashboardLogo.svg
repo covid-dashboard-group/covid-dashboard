@@ -47,7 +47,7 @@
 </filter>
 <mask id="mask0">
   <g filter="url(#alpha)">
-<rect x="0" y="0" width="375" height="374.999991" style="fill:rgb(0%,0%,0%);fill-opacity:0.1294;stroke:none;"/>
+<rect x="0" y="0" width="375" height="374.999991" style="fill:rgb(0%,0%,0%);fill-opacity:0.4471;stroke:none;"/>
   </g>
 </mask>
 <clipPath id="clip2">
