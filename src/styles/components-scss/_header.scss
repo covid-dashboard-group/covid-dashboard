@@ -1,64 +1,41 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.brand {
+@mixin header-styling {
+  height: 8vh;
+  border-radius: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
   display: flex;
-  // background-color: blue;
+  align-items: center;
+
+  .header-icon-text {
+    color: white;
+  }
 }
+
+
 
 .logo {
   height: 10vh;
 }
 
 .brand-text {
-  // background-color: red;
-}
-
-.header-white-space {
-  // background-color: green;
+  display: flex;
+  align-items: center;
 }
 
 .header-icon-infections {
-  // height: 10vh;
-  border-radius: 10px;
   background-image: url('../assets/1.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: orange;
-
-  display: flex;
-  align-items: flex-end;
-  
-  .header-text-infections {
-    color: white;
-    margin: 0;
-  }
+  @include header-styling();
 }
-
 
 .header-icon-deaths {
-  // height: 10vh;
-  border-radius: 10px;
   background-image: url('../assets/2.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: purple;
-  
-  .header-text-deaths {
-    color: white;
-  }
+  @include header-styling();
 }
 
-
 .header-icon-vaccinations {
-  // height: 10vh;
-  border-radius: 10px;
   background-image: url('../assets/3.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: teal;
-  
-  .header-text-vaccinations {
-    color: white;
-  }
+  @include header-styling();
 }
