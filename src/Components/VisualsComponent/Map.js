@@ -12,8 +12,8 @@ const Map = (props) => {
     mapboxgl.accessToken = REACT_APP_MAPBOX_APIKEY
 
     const styles = {
-        width: "800px",
-        height: "400px",
+        width: "100%",
+        height: "100%",
         borderRadius: "10px"        
     };
     useEffect(()=>{
