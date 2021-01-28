@@ -4,18 +4,7 @@ import axios from "axios";
 import { Container } from 'react-bootstrap'
 
 const NetPositiveGraph = (props) => {
-<<<<<<< HEAD
-  const [finalData, setFinalData] = useState([]);
-    
-  const dateFormat = (date) => {
-      let strDate = date.toString();
-      let strYear = strDate.substring(0, 4);
-      let strMonth = strDate.substring(4, 6);
-      let strDay = strDate.substring(strDate.length - 2, strDate.length);
-    //   console.log(strYear, strMonth, strDay)
-=======
     const [finalData, setFinalData] = useState([]);
->>>>>>> main
 
     const dateFormat = (date) => {
         let strDate = date.toString();
