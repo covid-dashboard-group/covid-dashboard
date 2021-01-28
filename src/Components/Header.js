@@ -24,11 +24,11 @@ const Header = (props) => {
           className='header-national-title'
           md={2}
         >
-          <p>
+          <p className='NATIONAL'>
             NATIONAL
           </p>
-          <p>
-            US STATS:
+          <p className="USSTATS">
+            U.S. STATS:
           </p>
         </Col>
 
