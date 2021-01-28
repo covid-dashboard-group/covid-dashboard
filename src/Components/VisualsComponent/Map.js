@@ -25,11 +25,11 @@ const Map = (props) => {
       zoom: 3
     })
   }, [])
+
   return (
     <Container className='Map'>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
     </Container>
-
   )
 }
 
