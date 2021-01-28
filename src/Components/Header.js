@@ -5,7 +5,7 @@ import { Row, Container, Col } from 'react-bootstrap'
 const Header = (props) => {
 
   return (
-    <div>
+    <Container>
       <Row className='Header'>
         <Col
           className='brand-logo'
@@ -53,7 +53,7 @@ const Header = (props) => {
           <p className='header-icon-text'>TOTAL US VACCINATIONS</p>
         </Col>
       </Row >
-    </div >
+    </Container >
   )
 }
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { ResponsiveLine } from '@nivo/line';
 import axios from "axios";
+import { Container } from 'react-bootstrap'
 
 const NetPositiveGraph = (props) => {
   const [finalData, setFinalData] = useState([]);
@@ -39,7 +40,7 @@ const NetPositiveGraph = (props) => {
   }, [finalData])
 
   return (
-      <div className="netPositive-graph">
+      <Container className="netPositive-graph">
           {finalData ?  
               <ResponsiveLine
                   data={finalData}
@@ -105,7 +106,7 @@ const NetPositiveGraph = (props) => {
                   ]}
               />
           : null}
-      </div>
+      </Container>
   )
 }
 

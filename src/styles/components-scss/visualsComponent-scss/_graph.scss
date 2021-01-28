@@ -1,10 +1,13 @@
 @import '../../base-scss/mixins';
 @import '../../base-scss/variables';
 
-// .GraphDiv {
-//   height: 100%;
-//   width: 100%;
-// }
+.Graph {
+  border: 1px black solid;
+  height: $sectionHeight;
+  width: 100%;
+  margin-bottom: $componentMargin;
+}
+
 
 // .GraphTabs {
 //   height: 100%;

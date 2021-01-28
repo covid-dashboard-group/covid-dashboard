@@ -1,13 +1,14 @@
 import React from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import NetPositiveGraph from './GraphComponents/NetPositiveGraph'
+import DeathsGraph from './GraphComponents/DeathsGraph'
 
 const Graph = (props) => {
 
   return (
     <Tabs
       defaultActiveKey='netPositive'
-      className='GraphTabs'
+      className='Graph'
     >
       <Tab
         eventKey='netPositive'
@@ -21,7 +22,7 @@ const Graph = (props) => {
         title='Deaths'
         className='GraphTab'
       >
-
+        <DeathsGraph />
       </Tab>
     </Tabs>
   )

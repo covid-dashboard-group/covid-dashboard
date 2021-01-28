@@ -8,10 +8,10 @@ const Data = (props) => {
   
   return (
     <div>
-      <Container className='USData'>
+      <Container>
         <USData />
       </Container>
-      <Container className='StateData'>
+      <Container>
         <StateData />
       </Container>
     </div>

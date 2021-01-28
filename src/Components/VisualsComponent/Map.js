@@ -1,11 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const Map = (props) => {
   
   return (
-    <div>
+    <Container className='Map'>
       Map.js
-    </div>
+    </Container>
   )
 }
 

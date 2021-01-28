@@ -6,14 +6,14 @@ import { Container } from 'react-bootstrap'
 const Media = (props) => {
 
   return (
-    <div>
-      <Container className='Articles'>
+    <Container>
+      <Container>
         <Articles />
       </Container>
-      <Container className='Twitter'>
+      <Container>
         <Twitter />
       </Container>
-    </div>
+    </Container>
   )
 }
 

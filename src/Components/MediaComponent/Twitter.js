@@ -1,11 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const Twitter = (props) => {
   
   return (
-    <div>
+    <Container className='Twitter'>
       Twitter.js
-    </div>
+    </Container>
   )
 }
 
