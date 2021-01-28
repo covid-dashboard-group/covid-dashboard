@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 import statesAbb from './utils/statesAbb.json'
 import stateInverter from './utils/stateInverter'
 
-const { REACT_APP_MAPBOX_APIKEY} = process.env;
+const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API} = process.env;
 
 function App() {
   const [state, setState]=useState('')
@@ -17,6 +17,9 @@ function App() {
   const [natData, setNatData]=useState({})
   const [allStatesData, setAllStatesData]=useState([])
   const [stateData, setStateData]=useState({})
+  const [news, setNews]=useState([])
+  const [tweets, setTweets]=useState([])
+  
   
   const successLocation=(e)=>{
     console.log('location found')
@@ -27,7 +30,7 @@ function App() {
       let placeArray=res.data.features[res.data.features.length-2].place_name.split(',')[0]
       setState(stateInverter(placeArray,statesAbb))
       console.log(state)
-             
+      getLocalNews(placeArray)
     })
     .catch(e=>console.log(e))
 
@@ -35,35 +38,56 @@ function App() {
 
   const errorLocation=(e)=>{
     console.log('location not provided')
+    getNationalNews()
   }
 
   //Get Location
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(successLocation,errorLocation)
   },[])
-  //Get National Data
-  useEffect(()=>{
-    axios.get('api/daily/national')
+  // Get National Data
+
+  useEffect(()=>{    
+    axios.get('https://covid-19.dataflowkit.com/v1/usa')
     .then(res=>setNatData(res.data))
     .catch(e=>console.log(e))
   },[])
+
   //Get State Data
   useEffect(()=>{
+    console.log('getting states')
     axios.get('api/daily/states')
-    .then(res=>{
-      setAllStatesData(res.data)      
-    })
-      
+    .then(res=>setAllStatesData(res.data))      
     .catch(e=>console.log(e))
   },[])
-  //alert to test the timing. can be turned off if annoying
+
+  //once state and natData available, filter to get the state data
+
   useEffect(()=>{
-    state&&
-    axios.get(`api/daily/states?q=${state}`)
-    .then(res=>setStateData(res.data))
+    if(state&&allStatesData){
+      console.log('setting state data')
+      setStateData(allStatesData.filter(e=>e.state===state)[0])     
+    }    
+  },[state,allStatesData])
+
+  //news
+
+  const getLocalNews=(inputState)=>{
+    axios.get(`https://newsapi.org/v2/everything?q=${'COVID '+inputState}&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=100&page=1`)
+    .then(res=>setNews(res.data))
     .catch(e=>console.log(e))
-  console.log(stateData)    
-  },[state])
+  }
+  const getNationalNews=()=>{
+    axios.get(`https://newsapi.org/v2/everything?q=COVID United States&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=100&page=1`)
+    .then(res=>setNews(res.data))
+    .catch(e=>console.log(e))
+  }
+  //twitter
+  useEffect(()=>{
+    axios.get(`/api/tweets`)
+    .then(res=>setTweets(res.data))
+    .catch(e=>console.log(e))
+  },[])
 
   return (
     <div className="App">
