@@ -5,7 +5,7 @@ import { Row, Container, Col } from 'react-bootstrap'
 const Header = (props) => {
 
   return (
-    <Container>
+    <Container fluid>
       <Row className='Header'>
         <Col
           className='brand-logo'
@@ -13,44 +13,43 @@ const Header = (props) => {
         >
           <DashboardLogo className='logo' />
         </Col>
-        
+
         <Col
           className='header-white-space'
           md={2}
         >
         </Col>
-
         <Col
-          className='header-national-title'
-          md={2}
+          className='header-icons'
+          md={8}
         >
-          <p className='NATIONAL'>
-            NATIONAL
+          <Container
+            className='header-national-title'
+          >
+            <p className='NATIONAL'>
+              NATIONAL
           </p>
-          <p className="USSTATS">
-            U.S. STATS:
+            <p className="USSTATS">
+              U.S. STATS:
           </p>
-        </Col>
+          </Container>
+          <Container
+            className='header-icon-infections'
+          >
+            <p className='header-icon-text'>TOTAL US INFECTIONS</p>
+          </Container>
 
-        <Col
-          className='header-icon-infections'
-          md={2}
-        >
-          <p className='header-icon-text'>TOTAL US INFECTIONS</p>
-        </Col>
+          <Container
+            className='header-icon-deaths'
+          >
+            <p className='header-icon-text'>TOTAL US DEATHS</p>
+          </Container>
 
-        <Col
-          className='header-icon-deaths'
-          md={2}
-        >
-          <p className='header-icon-text'>TOTAL US DEATHS</p>
-        </Col>
-
-        <Col
-          className='header-icon-vaccinations'
-          md={2}
-        >
-          <p className='header-icon-text'>TOTAL US VACCINATIONS</p>
+          <Container
+            className='header-icon-vaccinations'
+          >
+            <p className='header-icon-text'>TOTAL US VACCINATIONS</p>
+          </Container>
         </Col>
       </Row >
     </Container >

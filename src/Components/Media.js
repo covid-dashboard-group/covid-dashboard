@@ -7,12 +7,8 @@ const Media = (props) => {
 
   return (
     <Container>
-      <Container>
-        <Articles />
-      </Container>
-      <Container>
-        <Twitter />
-      </Container>
+      <Articles />
+      <Twitter />
     </Container>
   )
 }

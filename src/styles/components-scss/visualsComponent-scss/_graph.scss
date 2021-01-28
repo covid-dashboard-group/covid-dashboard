@@ -3,18 +3,17 @@
 
 .Graph {
   border: 1px black solid;
-  height: $sectionHeight;
+  height: $bottomSectionHeight;
   width: 100%;
-  margin-bottom: $componentMargin;
+  margin-bottom: $sectionMargin;
 }
 
+.GraphTabs {
+  height: 100%;
+  width: 100%;
+}
 
-// .GraphTabs {
-//   height: 100%;
-//   width: 100%;
-// }
-
-// .GraphTab {
-//   height: 100%;
-//   width: 100%;
-// }
+.GraphTab {
+  height: 100%;
+  width: 100%;
+}

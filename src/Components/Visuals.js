@@ -7,12 +7,8 @@ const Visuals = (props) => {
 
   return (
     <Container>
-      <Container>
-        <Map />
-      </Container>
-      <Container>
-        <Graph />
-      </Container>
+      <Map />
+      <Graph />
     </Container>
   )
 }

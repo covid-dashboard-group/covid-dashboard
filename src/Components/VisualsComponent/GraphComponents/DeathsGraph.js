@@ -4,12 +4,12 @@ import { ResponsiveLine } from '@nivo/line';
 import axios from "axios";
 
 const DeathsGraph = (props) => {
-  
+
 
   return (
-      <Container className="deaths-graph">
-          DeathsGraph.js
-      </Container>
+    <Container className="deaths-graph">
+      DeathsGraph.js
+    </Container>
   )
 }
 

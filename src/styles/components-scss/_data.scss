@@ -1,3 +1,7 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
+.Data {
+  height: $componentHeight;
+  margin: 0;
+}

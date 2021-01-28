@@ -1,6 +1,16 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
+.Header {
+  height: 10vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
 @mixin header-styling {
   height: 8vh;
   border-radius: 10px;
@@ -17,12 +27,6 @@
     font-weight: 700;
     margin: 5px;
   }
-}
-
-.Header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .brand-logo {
@@ -56,6 +60,10 @@
   }
 }
 
+.header-icons {
+  display: flex;
+}
+
 .header-icon-infections {
   @include header-styling();
 
@@ -64,12 +72,12 @@
 
 .header-icon-deaths {
   @include header-styling();
-
+  margin-left: 10px;
   background: linear-gradient(45deg, hsla(1, 92%, 47%, 1) 17%, hsla(328, 100%, 58%, 1) 100%);
 }
 
 .header-icon-vaccinations {
   @include header-styling();
-
+  margin-left: 10px;
   background: linear-gradient(45deg, hsla(175, 79%, 63%, 1) 0%, hsla(82, 96%, 57%, 1) 100%);
 }
