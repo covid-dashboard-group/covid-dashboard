@@ -1,12 +1,20 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
+import React from "react";
+import { Tabs, Tab } from "react-bootstrap";
+import NetPositiveGraph from './GraphComponents/NetPositiveGraph'
 
 const Graph = (props) => {
 
   return (
-    <div>
-      Graph.js
-    </div>
+    <Tabs
+      defaultActiveKey='netPositive'
+    >
+      <Tab
+        eventKey='netPositive'
+        title='Net Positive'
+      >
+        <NetPositiveGraph />
+      </Tab>
+      </Tabs>  
   )
 }
 
