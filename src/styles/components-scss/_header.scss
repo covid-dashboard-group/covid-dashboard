@@ -1,64 +1,74 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.brand {
+@mixin header-styling {
+  height: 8vh;
+  border-radius: 10px;
+  background-size: 300px 8vh;
+  background-repeat: no-repeat;
   display: flex;
-  // background-color: blue;
+  align-items: flex-end;
+  justify-content: center;
+
+  .header-icon-text {
+    color: white;
+  }
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   height: 10vh;
+  width: auto;
 }
 
-.brand-text {
-  // background-color: red;
-}
+.header-national-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: 500;
 
-.header-white-space {
-  // background-color: green;
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+  }
+
+  .NATIONAL {
+    font-size: 23px;
+  }
+  .USSTATS {
+    font-size: 22px;
+  }
 }
 
 .header-icon-infections {
-  // height: 10vh;
-  border-radius: 10px;
-  background-image: url('../assets/1.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: orange;
+  // background-image: url('../assets/1.svg');
+  @include header-styling();
 
-  display: flex;
-  align-items: flex-end;
-  
-  .header-text-infections {
-    color: white;
-    margin: 0;
-  }
+  background: linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
 }
-
 
 .header-icon-deaths {
-  // height: 10vh;
-  border-radius: 10px;
-  background-image: url('../assets/2.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: purple;
-  
-  .header-text-deaths {
-    color: white;
-  }
+  // background-image: url('../assets/2.svg');
+  @include header-styling();
+
+  background: linear-gradient(45deg, hsla(1, 92%, 47%, 1) 17%, hsla(328, 100%, 58%, 1) 100%);
 }
 
-
 .header-icon-vaccinations {
-  // height: 10vh;
-  border-radius: 10px;
-  background-image: url('../assets/3.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  // background-color: teal;
-  
-  .header-text-vaccinations {
-    color: white;
-  }
+  // background-image: url('../assets/3.svg');
+  @include header-styling();
+
+  background: linear-gradient(45deg, hsla(175, 79%, 63%, 1) 0%, hsla(82, 96%, 57%, 1) 100%);
 }
