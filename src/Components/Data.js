@@ -5,16 +5,12 @@ import { Container } from 'react-bootstrap'
 import Loading from './Loading'
 
 const Data = (props) => {
-  
+
   return (
-    <div>
-      <Container className='USData'>
-        <USData />
-      </Container>
-      <Container className='StateData'>
-        <StateData />
-      </Container>
-    </div>
+    <Container  className='Data'>
+      <USData />
+      <StateData />
+    </Container>
   )
 }
 

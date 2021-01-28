@@ -1,24 +1,32 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
+.Header {
+  height: 10vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
 @mixin header-styling {
   height: 8vh;
   border-radius: 10px;
   background-size: 300px 8vh;
   background-repeat: no-repeat;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 
   .header-icon-text {
     color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 5px;
   }
-}
-
-.Header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .brand-logo {
@@ -52,23 +60,46 @@
   }
 }
 
-.header-icon-infections {
-  // background-image: url('../assets/1.svg');
+.header-icons {
+  display: flex;
+}
+
+.header-icon-data {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+
+  p {
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.header-icon-active-infections {
   @include header-styling();
 
   background: linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
 }
 
-.header-icon-deaths {
-  // background-image: url('../assets/2.svg');
-  @include header-styling();
+.header-graphic {
+  height: 4vh;
+  width: auto;
+}
 
+.header-icon-deaths {
+  @include header-styling();
+  margin-left: 10px;
   background: linear-gradient(45deg, hsla(1, 92%, 47%, 1) 17%, hsla(328, 100%, 58%, 1) 100%);
 }
 
-.header-icon-vaccinations {
-  // background-image: url('../assets/3.svg');
+.header-icon-total-infections {
   @include header-styling();
-
-  background: linear-gradient(45deg, hsla(175, 79%, 63%, 1) 0%, hsla(82, 96%, 57%, 1) 100%);
+  margin-left: 10px;
+  background: linear-gradient(45deg, hsla(175, 79%, 50%, 1) 20%, hsla(82, 96%, 47%, 1) 100%);
 }

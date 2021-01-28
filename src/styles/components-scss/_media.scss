@@ -1,8 +1,7 @@
 @import '../base-scss/mixins';
 @import '../base-scss/variables';
 
-.Articles, .Twitter {
-  border: 1px black solid;
-  height: $sectionHeight;
-  margin-bottom: $componentMargin;
+.Media {
+  height: $componentHeight;
+  margin: 0;
 }

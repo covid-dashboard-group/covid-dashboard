@@ -1,20 +1,32 @@
 import React from "react";
-import { Tabs, Tab } from "react-bootstrap";
+import { Tabs, Tab, Container, DropdownButton, Dropdown } from "react-bootstrap";
 import NetPositiveGraph from './GraphComponents/NetPositiveGraph'
+import DeathsGraph from './GraphComponents/DeathsGraph'
 
 const Graph = (props) => {
 
   return (
-    <Tabs
-      defaultActiveKey='netPositive'
-    >
-      <Tab
-        eventKey='netPositive'
-        title='Net Positive'
+    <Container className='Graph'>
+      <Tabs
+        defaultActiveKey='netPositive'
+        className='GraphTabs'
       >
-        <NetPositiveGraph />
-      </Tab>
-      </Tabs>  
+        <Tab
+          eventKey='netPositive'
+          title='Net Positive'
+          className='GraphTab'
+        >
+          <NetPositiveGraph />
+        </Tab>
+        <Tab
+          eventKey='deaths'
+          title='Deaths'
+          className='GraphTab'
+        >
+          <DeathsGraph />
+        </Tab>
+      </Tabs>
+    </Container>
   )
 }
 

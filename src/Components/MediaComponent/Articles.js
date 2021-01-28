@@ -1,11 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const Articles = (props) => {
   
   return (
-    <div>
+    <Container className='Articles'>
       Articles.js
-    </div>
+    </Container>
   )
 }
 
