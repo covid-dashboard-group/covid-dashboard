@@ -30,12 +30,15 @@ function App() {
              
     })
     .catch(e=>console.log(e))
-
   }
 
   const errorLocation=(e)=>{
     console.log('location not provided')
   }
+
+  useEffect(() => {
+    console.log('hello world')
+  })
 
   //Get Location
   useEffect(()=>{
@@ -67,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header natData={natData}/>
       <Container className='display' fluid>
         <Row>
           <Col xs={12} md={3} className='Data'>

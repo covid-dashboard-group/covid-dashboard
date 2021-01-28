@@ -7,11 +7,15 @@
   background-size: 300px 8vh;
   background-repeat: no-repeat;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 
   .header-icon-text {
     color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 5px;
   }
 }
 
@@ -53,21 +57,18 @@
 }
 
 .header-icon-infections {
-  // background-image: url('../assets/1.svg');
   @include header-styling();
 
   background: linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
 }
 
 .header-icon-deaths {
-  // background-image: url('../assets/2.svg');
   @include header-styling();
 
   background: linear-gradient(45deg, hsla(1, 92%, 47%, 1) 17%, hsla(328, 100%, 58%, 1) 100%);
 }
 
 .header-icon-vaccinations {
-  // background-image: url('../assets/3.svg');
   @include header-styling();
 
   background: linear-gradient(45deg, hsla(175, 79%, 63%, 1) 0%, hsla(82, 96%, 57%, 1) 100%);
