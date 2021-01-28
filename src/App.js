@@ -33,7 +33,6 @@ function App() {
       getLocalNews(placeArray)
     })
     .catch(e=>console.log(e))
-
   }
 
   const errorLocation=(e)=>{
@@ -91,16 +90,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header natData={natData}/>
       <Container className='display' fluid>
         <Row>
-          <Col xs={12} md={3} className='Data'>
+          <Col xs={12} md={3}>
             <Data />
           </Col>
-          <Col xs={12} md={6} className='Visuals'>
+          <Col xs={12} md={6}>
             <Visuals />
           </Col>
-          <Col xs={12} md={3} className='Media'>
+          <Col xs={12} md={3}>
             <Media />
           </Col>
         </Row>

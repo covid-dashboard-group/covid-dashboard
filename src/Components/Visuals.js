@@ -6,14 +6,10 @@ import Graph from './VisualsComponent/Graph'
 const Visuals = (props) => {
 
   return (
-    <div>
-      <Container className='Map'>
-        <Map />
-      </Container>
-      <Container className='Graph'>
-        <Graph />
-      </Container>
-    </div>
+    <Container className='Visuals'>
+      <Map />
+      <Graph />
+    </Container>
   )
 }
 

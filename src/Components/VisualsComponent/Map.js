@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react'
+import { Container } from 'react-bootstrap'
 import dotenv from 'dotenv'
 import mapboxgl from 'mapbox-gl'
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -25,8 +26,9 @@ const Map = (props) => {
         })
       },[])
   return (
-    
+    <Container>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
+    </Container>
     
   )
 }
