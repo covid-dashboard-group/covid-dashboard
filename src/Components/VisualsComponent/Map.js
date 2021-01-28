@@ -29,7 +29,6 @@ const Map = (props) => {
     <Container className='Map'>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
     </Container>
-
   )
 }
 
