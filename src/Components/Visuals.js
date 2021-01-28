@@ -6,7 +6,7 @@ import Graph from './VisualsComponent/Graph'
 const Visuals = (props) => {
 
   return (
-    <Container>
+    <Container className='Visuals'>
       <Map />
       <Graph />
     </Container>

@@ -7,7 +7,7 @@ import Loading from './Loading'
 const Data = (props) => {
 
   return (
-    <Container>
+    <Container  className='Data'>
       <USData />
       <StateData />
     </Container>
