@@ -13,9 +13,9 @@ const Map = (props) => {
     mapboxgl.accessToken = REACT_APP_MAPBOX_APIKEY
 
     const styles = {
-        width: "800px",
-        height: "400px",
-        borderRadius: "10px"        
+        width: "100%",
+        height: "100%",
+        borderRadius: "10px"       
     };
     useEffect(()=>{
         let map=new mapboxgl.Map({
@@ -24,12 +24,12 @@ const Map = (props) => {
             center:[-111,33],
             zoom:3
         })
-      },[])
+    }, [])
+  
   return (
-    <Container>
+    <Container className='Map'>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
     </Container>
-    
   )
 }
 
