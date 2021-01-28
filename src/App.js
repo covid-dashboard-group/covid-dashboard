@@ -36,10 +36,6 @@ function App() {
     console.log('location not provided')
   }
 
-  useEffect(() => {
-    console.log('hello world')
-  })
-
   //Get Location
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(successLocation,errorLocation)

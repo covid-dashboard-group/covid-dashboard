@@ -7,14 +7,23 @@ const Graph = (props) => {
   return (
     <Tabs
       defaultActiveKey='netPositive'
+      className='GraphTabs'
     >
       <Tab
         eventKey='netPositive'
         title='Net Positive'
+        className='GraphTab'
       >
         <NetPositiveGraph />
       </Tab>
-      </Tabs>  
+      <Tab
+        eventKey='deaths'
+        title='Deaths'
+        className='GraphTab'
+      >
+
+      </Tab>
+    </Tabs>
   )
 }
 

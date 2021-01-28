@@ -10,8 +10,6 @@ const NetPositiveGraph = (props) => {
       let strYear = strDate.substring(0, 4);
       let strMonth = strDate.substring(4, 6);
       let strDay = strDate.substring(strDate.length - 2, strDate.length);
-      console.log(strYear, strMonth, strDay)
-
       return `${strMonth}/${strDay}/${strYear}`;
   }
 
