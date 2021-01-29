@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap'
 import dotenv from 'dotenv'
 import mapboxgl from 'mapbox-gl'
 import "mapbox-gl/dist/mapbox-gl.css";
-import stateOutline from '../../utils/gz_2010_us_outline_20m.json'
 import axios from 'axios';
 
 const { REACT_APP_MAPBOX_APIKEY } = process.env;
