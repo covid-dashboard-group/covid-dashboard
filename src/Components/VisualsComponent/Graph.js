@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, Tab, Container, DropdownButton, Dropdown } from "react-bootstrap";
 import NetPositiveGraph from './GraphComponents/NetPositiveGraph'
 import DeathsGraph from './GraphComponents/DeathsGraph'
+import CumulativeGraph from "./GraphComponents/CumulativeGraph";
 
 const Graph = (props) => {
 
@@ -24,6 +25,13 @@ const Graph = (props) => {
           className='GraphTab'
         >
           <DeathsGraph />
+        </Tab>
+        <Tab
+          eventKey="cumulative"
+          title="Cumulative"
+          className="GraphTab"
+        >
+          <CumulativeGraph />
         </Tab>
       </Tabs>
     </Container>
