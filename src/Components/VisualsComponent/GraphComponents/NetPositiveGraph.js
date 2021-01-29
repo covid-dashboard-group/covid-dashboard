@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from '@nivo/line';
 import axios from "axios";
 import { Container } from 'react-bootstrap'
+import { ThemeProvider } from '@nivo/core'
+import Loading from '../../Loading'
 
 const NetPositiveGraph = (props) => {
     const [finalData, setFinalData] = useState([]);
@@ -40,73 +42,93 @@ const NetPositiveGraph = (props) => {
     }, [finalData])
 
     return (
-        <Container className="netPositive-graph">
-            {finalData ?
-                <ResponsiveLine
-                    data={finalData}
-                    margin={{ top: 20, right: 80, bottom: 20, left: 80 }}
-                    xScale={{ type: 'point' }}
-                    yScale={{ type: 'linear', min: 0, max: 300000, stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
-                    axisTop={null}
-                    axisRight={null}
-                    axisBottom={{
-                        orient: 'bottom',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        tickValues: ["01/20/2020", "03/20/2020", "05/20/2020", "07/20/2020", "09/20/2020", "11/20/2020", "01/20/2021"],
-                        legend: 'Date',
-                        legendOffset: 36,
-                        legendPosition: 'middle'
-                    }}
-                    gridXValues={["01/08/2020"]}
-                    axisLeft={{
-                        orient: 'left',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: "Increase in Cases",
-                        legendOffset: -70,
-                        legendPosition: 'middle'
-                    }}
-                    enableGridX={false}
-                    pointSize={1}
-                    pointColor={{ theme: 'background' }}
-                    pointBorderWidth={2}
-                    pointBorderColor={{ from: 'serieColor' }}
-                    pointLabelYOffset={-12}
-                    enableArea={true}
-                    useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'column',
-                            justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 80,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
-                                    }
+        <Container className="netPositive-graph" >
+            {
+                finalData ?
+                    < ResponsiveLine
+                        theme={{
+                            fontFamily: "'Raleway', Arial, Helvetica, sans-serif",
+                            fontSize: "11px",
+                            axis: {
+                                legend: {
+                                    text: {
+                                        fontSize: "18px",
+                                    },
+                                },
+                            },
+                            legends: {
+                                text: {
+                                    fontSize: "14px"
                                 }
-                            ]
+                            }
+                        }}
+                        colors={{ scheme: 'set1' }}
+                        data={finalData}
+                        margin={{ top: 20, right: 90, bottom: 50, left: 80 }}
+                        xScale={{ type: 'point' }
                         }
-                    ]}
-                />
-                : null}
-        </Container>
+                        yScale={{ type: 'linear', min: 0, max: 300000, stacked: true, reverse: false }}
+                        yFormat=" >-.2f"
+                        axisTop={null}
+                        axisRight={null}
+                        axisBottom={{
+                            orient: 'bottom',
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            tickValues: ["01/20/2020", "03/20/2020", "05/20/2020", "07/20/2020", "09/20/2020", "11/20/2020", "01/20/2021"],
+                            legend: 'Date',
+                            legendOffset: 36,
+                            legendPosition: 'middle'
+                        }}
+                        gridXValues={["01/08/2020"]}
+                        axisLeft={{
+                            orient: 'left',
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: "Increase in Cases",
+                            legendOffset: -70,
+                            legendPosition: 'middle'
+                        }}
+                        enableGridX={false}
+                        pointSize={1}
+                        pointColor={{ theme: 'background' }}
+                        pointBorderWidth={2}
+                        pointBorderColor={{ from: 'serieColor' }}
+                        pointLabelYOffset={- 12}
+                        enableArea={true}
+                        useMesh={true}
+                        legends={
+                            [
+                                {
+                                    anchor: 'bottom-right',
+                                    direction: 'column',
+                                    justify: false,
+                                    translateX: 100,
+                                    translateY: 0,
+                                    itemsSpacing: 0,
+                                    itemDirection: 'left-to-right',
+                                    itemWidth: 80,
+                                    itemHeight: 20,
+                                    itemOpacity: 0.75,
+                                    symbolSize: 12,
+                                    symbolShape: 'circle',
+                                    symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                                    effects: [
+                                        {
+                                            on: 'hover',
+                                            style: {
+                                                itemBackground: 'rgba(0, 0, 0, .03)',
+                                                itemOpacity: 1
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]}
+                    />
+                    : <Loading />}
+        </Container >
     )
 }
 
