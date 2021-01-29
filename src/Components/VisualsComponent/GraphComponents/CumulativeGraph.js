@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from "react";
-import {Container} from "react-bootstrap";
-import {ResponsiveLine} from "@nivo/line";
+import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { ResponsiveLine } from "@nivo/line";
 import axios from "axios";
+import Loading from '../../Loading'
 
 const CumulativeGraph = (props) => {
     const [finalData, setFinalData] = useState([]);
     const [maxY, setMaxY] = useState();
-    
+
     const dateFormat = (date) => {
         let strDate = date.toString();
         let strYear = strDate.substring(0, 4);
@@ -30,7 +31,7 @@ const CumulativeGraph = (props) => {
                         data: []
                     }
                 ];
-            
+
                 let values = {
                     x: "date",
                     y: 0
@@ -38,11 +39,11 @@ const CumulativeGraph = (props) => {
 
                 let caseCount = [];
 
-                for(let i = 0; i < res.data.length; i++) {
-                    formattedData[0].data.push({...values});
+                for (let i = 0; i < res.data.length; i++) {
+                    formattedData[0].data.push({ ...values });
                     formattedData[0].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
                     formattedData[0].data[i].y = res.data[res.data.length - (i + 1)].positive;
-                    formattedData[1].data.push({...values});
+                    formattedData[1].data.push({ ...values });
                     formattedData[1].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
                     formattedData[1].data[i].y = res.data[res.data.length - (i + 1)].negative;
                     caseCount.push(res.data[res.data.length - (i + 1)].negative);
@@ -54,10 +55,27 @@ const CumulativeGraph = (props) => {
 
     return (
         <Container className="cumulative-graph">
-            {finalData && maxY > 0 ?  
+            {finalData && maxY > 0 ?
                 <ResponsiveLine
+                    theme={{
+                        fontFamily: "'Raleway', Arial, Helvetica, sans-serif",
+                        fontSize: "11px",
+                        axis: {
+                            legend: {
+                                text: {
+                                    fontSize: "18px",
+                                },
+                            },
+                        },
+                        legends: {
+                            text: {
+                                fontSize: "14px"
+                            }
+                        }
+                    }}
+                    colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 50, right: 100, bottom: 50, left: 100 }}
+                    margin={{ top: 10, right: 100, bottom: 50, left: 100 }}
                     xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
                     yFormat=" >-.2f"
@@ -79,7 +97,7 @@ const CumulativeGraph = (props) => {
                         tickPadding: 5,
                         tickRotation: 0,
                         legend: "Cumulative Cases",
-                        legendOffset: -75,
+                        legendOffset: -90,
                         legendPosition: 'middle'
                     }}
                     enableGridX={false}
@@ -117,7 +135,7 @@ const CumulativeGraph = (props) => {
                         }
                     ]}
                 />
-            : null}
+                : <Loading />}
         </Container>
     )
 }
