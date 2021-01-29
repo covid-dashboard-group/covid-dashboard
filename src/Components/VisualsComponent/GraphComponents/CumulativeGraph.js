@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { ResponsiveLine } from '@nivo/line';
+import React, {useState, useEffect} from "react";
+import {Container} from "react-bootstrap";
+import {ResponsiveLine} from "@nivo/line";
 import axios from "axios";
-import { Container } from 'react-bootstrap'
 
-const NetPositiveGraph = (props) => {
+const CumulativeGraph = (props) => {
     const [finalData, setFinalData] = useState([]);
-
+    const [maxY, setMaxY] = useState();
+    
     const dateFormat = (date) => {
         let strDate = date.toString();
         let strYear = strDate.substring(0, 4);
         let strMonth = strDate.substring(4, 6);
         let strDay = strDate.substring(strDate.length - 2, strDate.length);
+
         return `${strMonth}/${strDay}/${strYear}`;
     }
 
@@ -23,30 +25,41 @@ const NetPositiveGraph = (props) => {
                         id: "Positive",
                         data: []
                     },
+                    {
+                        id: "Negative",
+                        data: []
+                    }
                 ];
-
+            
                 let values = {
                     x: "date",
                     y: 0
                 };
 
-                for (let i = 0; i < res.data.length; i++) {
-                    formattedData[0].data.push({ ...values });
+                let caseCount = [];
+
+                for(let i = 0; i < res.data.length; i++) {
+                    formattedData[0].data.push({...values});
                     formattedData[0].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
-                    formattedData[0].data[i].y = res.data[res.data.length - (i + 1)].positiveIncrease;
+                    formattedData[0].data[i].y = res.data[res.data.length - (i + 1)].positive;
+                    formattedData[1].data.push({...values});
+                    formattedData[1].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
+                    formattedData[1].data[i].y = res.data[res.data.length - (i + 1)].negative;
+                    caseCount.push(res.data[res.data.length - (i + 1)].negative);
                 }
                 setFinalData(formattedData);
+                setMaxY(Math.max(...caseCount));
             })
     }, [finalData])
 
     return (
-        <Container className="netPositive-graph">
-            {finalData ?
+        <Container className="cumulative-graph">
+            {finalData && maxY > 0 ?  
                 <ResponsiveLine
                     data={finalData}
-                    margin={{ top: 20, right: 80, bottom: 20, left: 80 }}
+                    margin={{ top: 50, right: 100, bottom: 50, left: 100 }}
                     xScale={{ type: 'point' }}
-                    yScale={{ type: 'linear', min: 0, max: 300000, stacked: true, reverse: false }}
+                    yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
                     yFormat=" >-.2f"
                     axisTop={null}
                     axisRight={null}
@@ -58,16 +71,15 @@ const NetPositiveGraph = (props) => {
                         tickValues: ["01/20/2020", "03/20/2020", "05/20/2020", "07/20/2020", "09/20/2020", "11/20/2020", "01/20/2021"],
                         legend: 'Date',
                         legendOffset: 36,
-                        legendPosition: 'middle'
+                        legendPosition: 'middle',
                     }}
-                    gridXValues={["01/08/2020"]}
                     axisLeft={{
                         orient: 'left',
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: "Increase in Cases",
-                        legendOffset: -70,
+                        legend: "Cumulative Cases",
+                        legendOffset: -75,
                         legendPosition: 'middle'
                     }}
                     enableGridX={false}
@@ -105,9 +117,9 @@ const NetPositiveGraph = (props) => {
                         }
                     ]}
                 />
-                : null}
+            : null}
         </Container>
     )
 }
 
-export default NetPositiveGraph
+export default CumulativeGraph
