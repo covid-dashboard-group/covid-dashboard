@@ -8,7 +8,7 @@ import { Row, Container, Col } from 'react-bootstrap'
 
 const Header = (props) => {
 
-  useEffect(() => console.log(props.natData))
+  // useEffect(() => console.log(props.natData))
 
   return (
     <Container fluid>

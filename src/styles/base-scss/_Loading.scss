@@ -21,7 +21,7 @@
 .LoadingBox {
   height: 12vh;
   position: absolute;
-  top: 35%;
+  top: 15%;
   animation: rotate 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -31,7 +31,7 @@
   height: 12vh;
   z-index: 1000;
   position: absolute;
-  top: 35%;
+  top: 15%;
 }
 
 @keyframes rotate {

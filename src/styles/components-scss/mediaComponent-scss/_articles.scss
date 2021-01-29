@@ -4,5 +4,10 @@
 .Articles {
   border: 1px black solid;
   height: $topSectionHeight;
+  width: 100%;
+  max-height: $topSectionHeight;
   margin-bottom: $sectionMargin;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
 }
