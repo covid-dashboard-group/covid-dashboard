@@ -97,7 +97,8 @@ function App() {
             <Data />
           </Col>
           <Col xs={12} md={6}>
-            <Visuals />
+            <Visuals
+            allStatesData={allStatesData} />
           </Col>
           <Col xs={12} md={3}>
             <Media />
