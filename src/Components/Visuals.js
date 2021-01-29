@@ -9,7 +9,7 @@ const Visuals = (props) => {
     <Container className='Visuals'>
       <Map
       allStatesData={props.allStatesData} />
-      {/* <Graph /> */}
+      <Graph />
     </Container>
   )
 }
