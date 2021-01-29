@@ -6,8 +6,7 @@ module.exports={
         console.log('getting state daily')        
         console.log('Fetching data...')
        let results=await axios.get('https://covidtracking.com/api/states')
-        .then(res=>res.data
-            )
+        .then(res=>res.data)
         .catch(e=>console.log(e))      
 
        return res.status(200).send(results)
