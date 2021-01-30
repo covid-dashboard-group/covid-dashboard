@@ -93,15 +93,15 @@ function App() {
       <Header natData={natData}/>
       <Container className='display' fluid>
         <Row>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={3} className='Col'>
             <Data />
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} className='Col'>
             <Visuals
             allStatesData={allStatesData} />
           </Col>
-          <Col xs={12} md={3}>
-            <Media />
+          <Col xs={12} md={3} className='Col'>
+            <Media news={news}/>
           </Col>
         </Row>
       </Container>

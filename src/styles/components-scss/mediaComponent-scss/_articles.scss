@@ -2,7 +2,10 @@
 @import '../../base-scss/variables';
 
 .Articles {
-  border: 1px black solid;
   height: $topSectionHeight;
+  width: 100%;
+  max-height: $topSectionHeight;
   margin-bottom: $sectionMargin;
+  overflow-y: scroll;
+  padding: 0;
 }
