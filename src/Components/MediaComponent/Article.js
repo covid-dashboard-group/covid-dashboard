@@ -27,23 +27,18 @@ const Article = (props) => {
   function handleTitleLength() {
     let shortTitle = []
     let { title } = props.article
-    // console.log('title', title)
     let titleArr = title.split('')
-    // console.log(titleArr)
 
-    if (titleArr.length > 45) {
-      for (let i = 0; i < 45; i++) {
+    if (titleArr.length > 50) {
+      for (let i = 0; i < 50; i++) {
         shortTitle.push(titleArr[i])
       }
       shortTitle.push('.')
       shortTitle.push('.')
       shortTitle.push('.')
-      console.log('shortTitle', shortTitle)
       let titleJoined = shortTitle.join('')
-      console.log(titleJoined)
       return titleJoined
     } else {
-      console.log(title)
       return title
     }
   }
@@ -55,7 +50,7 @@ const Article = (props) => {
           {handleTitleLength()}
         </Card.Title>
         <Card.Subtitle
-        class='text-muted'  className='article-subtitle'>
+          className='article-subtitle'>
           {props.article.source.name}
         </Card.Subtitle>
       </Card.Body>
