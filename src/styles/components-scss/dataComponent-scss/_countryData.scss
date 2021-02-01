@@ -1,7 +1,7 @@
 @import '../../base-scss/mixins';
 @import '../../base-scss/variables';
 
-.StateData {
+.CountryData {
   height: $topSectionHeight;
   width: 100%;
   max-height: $topSectionHeight;
@@ -11,11 +11,11 @@
   font-size: 14px;
 }
 
-.state-table-header {
+.country-table-header {
   font-weight: 700;
   line-height: 16px;
 }
 
-.state-name {
+.country-name {
   font-weight: 500;
 }

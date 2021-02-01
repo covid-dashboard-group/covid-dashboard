@@ -45,13 +45,19 @@ const StateData = (props) => {
   return (
     <Container className='StateData'>
       {finalData ? 
-            <Table>
-                <thead>
+              <Table
+                striped
+              >
+                  <thead
+                    className='state-table-header'
+                  >
                     <th>State</th>
                     <th>Positive Total</th>
                     <th>Positive Increase</th>
                 </thead>
-                <tbody>
+                  <tbody
+                    className='state-table-body'
+                  >
                     {finalData.map(renderData)}
                 </tbody>
             </Table>
