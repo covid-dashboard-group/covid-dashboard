@@ -14,10 +14,12 @@ const { REACT_APP_MAPBOX_APIKEY } = process.env;
 const Map = (props) => {
   const mapContainer = useRef("");
   const [stateGeojson,setStateGeojson]=useState({})
+  const [countyGeojson, setCountyGeojson]=useState({})
 
   const geoMaker=(geoData,covidData)=>{
       for(let i=0;i<geoData.features.length;i++){
         for(let j=0;j<props.allStatesData.length;j++){
+          
           if(geoData.features[i].properties['NAME']===stateInverter(props.allStatesData[j].state,statesAbb)){
               geoData.features[i].properties={...geoData.features[i].properties,...props.allStatesData[j],isState:true}
           }
@@ -28,15 +30,27 @@ const Map = (props) => {
 
     return geoData
   }
+  const countyGeoMaker=(geoData,covidData)=>{
+    for(let i=0;i<geoData.features.length;i++){
+      for(let j=0;j<props.countyData;j++){
+        console.log(geoData.features[i].properties['AFFGEOID'],props.countyData[j]['fips'])
+        if(geoData.features[i].properties['AFFGEOID'].includes(`US${props.countyData[j]['fips']}`)){
+          geoData.features[i].properties={...geoData.features[i].properties,...props.countyData[j],isCounty:true}
+        }
+      }
+    }
+    return geoData
+  }
 
   mapboxgl.accessToken = REACT_APP_MAPBOX_APIKEY
-  var zoomThreshold = 4;
+  const zoomThreshold = 4;
 
   const styles = {
     width: "100%",
     height: "42vh",
     borderRadius: "10px",
   };
+    
   useEffect(()=>{
     axios.get('https://persona-project.s3-us-west-1.amazonaws.com/gz_2010_us_040_00_20m.json')
     .then(res=>{
@@ -45,15 +59,28 @@ const Map = (props) => {
     .catch(e=>console.log(e))
   },[props.allStatesData])
 
+    useEffect(()=>{
+      axios.get('https://persona-project.s3-us-west-1.amazonaws.com/cb_2018_us_county_20m.geojson')
+      .then(res=>{
+        let geoTotal=countyGeoMaker(res.data,props.countyData)
+        setCountyGeojson(geoTotal)})
+      .catch(e=>console.log(e))
+    },[props.countyData])
+
+
   useEffect(()=>{
     if(stateGeojson&&props.allStatesData.length>0){
-      console.log('got both')
-      console.log('geo',stateGeojson)
-      console.log('props',props.allStatesData)
+      // console.log('got both')
+      // console.log('geo',stateGeojson)
+      // console.log('props',props.allStatesData)
     } 
   },[setStateGeojson,props.allStatesData])
+
+  useEffect(()=>{
+    axios.get()
+  })
   useEffect(() => {
-    if (stateGeojson){
+    if (stateGeojson&&countyGeojson){
 
       
       let map = new mapboxgl.Map({
@@ -62,26 +89,32 @@ const Map = (props) => {
         center: [-111, 33],
         zoom: 3
       })
+
+      
       map.on('load', function () {
         map.addSource('statesGeo', {
           'type': 'geojson',
           'data': stateGeojson
-        });    
+        });   
+        map.addSource('cb_2018_us_county_20m',{
+          'type': 'geojson',
+          'data': countyGeojson
+        }) 
         
-        map.addLayer({
-          'id':'first',
-          'source':'statesGeo',
-          // "source-layer": 'properties',
-          'type':'symbol',
-          // 'paint': 
-          //       {
+        // map.addLayer({
+        //   'id':'first',
+        //   'source':'statesGeo',
+        //   // "source-layer": 'properties',
+        //   'type':'symbol',
+        //   // 'paint': 
+        //   //       {
             
-            //           'fill-opacity': 0.75
-            //       },
-            'layout': {
-              "text-field":['get','positive']
-            }
-          })
+        //     //           'fill-opacity': 0.75
+        //     //       },
+        //     'layout': {
+        //       "text-field":['get','positive']
+        //     }
+        //   })
           
           map.addLayer({
               'id':'seconds',
@@ -124,7 +157,7 @@ const Map = (props) => {
                     //         'source-layer': 'CENSUSAREA',
                     //         // 'maxzoom': zoomThreshold,
                     //         'type': 'fill',
-                    //         // 'filter': ['==', 'isState', true],
+                            // 'filter': ['==', 'isState', true],
                     // 'paint': 
                     // {
                           // 'fill-color': [
@@ -156,43 +189,42 @@ const Map = (props) => {
                         //     'waterway-label'
                         // );
                         
-                        //     // map.addLayer(
-                          //     //     {
-                            //     //         'id': 'county-population',
-                            //     //         'source': 'population',
-                            //     //         'source-layer': 'state_county_population_2014_cen',
-                            //     //         'minzoom': zoomThreshold,
-                            //     //         'type': 'fill',
-                            //     //         'filter': ['==', 'isCounty', true],
-                            //     //         'paint': {
-                              //     //             'fill-color': [
-                                //     //                 'interpolate',
-                                //     //                 ['linear'],
-                                //     //                 ['get', 'population'],
-                                //     //                 0,
-                                //     //                 '#F2F12D',
-                                //     //                 100,
-                                //     //                 '#EED322',
-                                //     //                 1000,
-                                //     //                 '#E6B71E',
-                                //     //                 5000,
-                                //     //                 '#DA9C20',
-                                //     //                 10000,
-                                //     //                 '#CA8323',
-                                //     //                 50000,
-                                //     //                 '#B86B25',
-                                //     //                 100000,
-                                //     //                 '#A25626',
-                                //     //                 500000,
-                                //     //                 '#8B4225',
-                                //     //                 1000000,
-                                //     //                 '#723122'
-                                //     //             ],
-                                //     //             'fill-opacity': 0.75
-                                //     //         }
-                                //     //     },
-                                //     //     'waterway-label'
-                                //     // );
+                            map.addLayer(
+                                  {
+                                        'id': 'county-population',
+                                        'source': 'cb_2018_us_county_20m',                                        
+                                        // 'minzoom': zoomThreshold,
+                                        'type': 'fill',
+                                        // 'filter': ['==', 'isCounty', true],
+                                        'paint': {
+                                              'fill-color': [
+                                                    'interpolate',
+                                                    ['linear'],
+                                                    ['get', 'population'],
+                                                    0,
+                                                    '#F2F12D',
+                                                    100,
+                                                    '#EED322',
+                                                    1000,
+                                                    '#E6B71E',
+                                                    5000,
+                                                    '#DA9C20',
+                                                    10000,
+                                                    '#CA8323',
+                                                    50000,
+                                                    '#B86B25',
+                                                    100000,
+                                                    '#A25626',
+                                                    500000,
+                                                    '#8B4225',
+                                                    1000000,
+                                                    '#723122'
+                                                ],
+                                                'fill-opacity': 0.75
+                                            }
+                                        },
+                                        'waterway-label'
+                                    );
   // });
   
   // var stateLegendEl = document.getElementById('state-legend');
@@ -207,11 +239,22 @@ const Map = (props) => {
   //     }
 });
 }
-}, [stateGeojson])
+}, [stateGeojson,countyGeojson])
 
 return (
   <Container className='Map'>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
+      <div id="state-legend" className="legend">
+    <h4>Population</h4>
+    <div><span style={{backgroundColor: '#723122'}}></span>2,500,000</div>
+    <div><span style={{backgroundColor: '#8b4225'}}></span>1,000,000</div>
+    <div><span style={{backgroundColor: '#a25626'}}></span>750,000</div>
+    <div><span style={{backgroundColor: '#b86b25'}}></span>500,000</div>
+    <div><span style={{backgroundColor: '#ca8323'}}></span>250,000</div>
+    <div><span style={{backgroundColor: '#da9c20'}}></span>100,000</div>
+    <div><span style={{backgroundColor: '#e6b71e'}}></span>75,000</div>
+    <div><span style={{backgroundColor: '#eed322'}}></span>50,000</div>    
+</div>
     </Container>
   )
 }

@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 import statesAbb from './utils/statesAbb.json'
 import stateInverter from './utils/stateInverter'
 
-const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API} = process.env;
+const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API, REACT_APP_COVID_ACT_NOW} = process.env;
 
 function App() {
   const [state, setState]=useState('')
@@ -17,6 +17,7 @@ function App() {
   const [natData, setNatData]=useState({})
   const [allStatesData, setAllStatesData]=useState([])
   const [stateData, setStateData]=useState({})
+  const [countyData, setCountyData]= useState([])
   const [news, setNews]=useState([])
   const [tweets, setTweets]=useState([])
   
@@ -82,9 +83,15 @@ function App() {
     .catch(e=>console.log(e))
   }
   //twitter
+  // useEffect(()=>{
+  //   axios.get(`/api/tweets`)
+  //   .then(res=>setTweets(res.data))
+  //   .catch(e=>console.log(e))
+  // },[])
+  //county data
   useEffect(()=>{
-    axios.get(`/api/tweets`)
-    .then(res=>setTweets(res.data))
+    axios.get(`https://api.covidactnow.org/v2/counties.json?apiKey=${REACT_APP_COVID_ACT_NOW}`)
+    .then(res=>setCountyData(res.data))
     .catch(e=>console.log(e))
   },[])
 
@@ -98,7 +105,8 @@ function App() {
           </Col>
           <Col xs={12} md={6} className='Col'>
             <Visuals
-            allStatesData={allStatesData} />
+            allStatesData={allStatesData}
+            countyData={countyData} />
           </Col>
           <Col xs={12} md={3} className='Col'>
             <Media news={news}/>
