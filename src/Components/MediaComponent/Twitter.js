@@ -9,7 +9,7 @@ const Twitter = (props) => {
   
   return (
     <Container className='Twitter'>
-      {props.tweets ? (
+      {props.tweets.length !== 0 ? (
         props.tweets.map(element => {
           return (
             <Tweet

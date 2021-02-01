@@ -66,7 +66,12 @@ const Article = (props) => {
           </Card.Title>
           <Card.Subtitle
             className='article-subtitle'>
-            {props.article.source.name}
+            <div>
+              {convertDate()}
+            </div>
+            <div>
+              {props.article.source.name}
+            </div>
           </Card.Subtitle>
         </Card.Body>
         {props.article.urlToImage ? (
