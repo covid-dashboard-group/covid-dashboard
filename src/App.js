@@ -82,11 +82,11 @@ function App() {
     .catch(e=>console.log(e))
   }
   //twitter
-  // useEffect(()=>{
-  //   axios.get(`/api/tweets`)
-  //   .then(res=>setTweets(res.data))
-  //   .catch(e=>console.log(e))
-  // },[])
+  useEffect(()=>{
+    axios.get(`/api/tweets`)
+    .then(res=>setTweets(res.data))
+    .catch(e=>console.log(e))
+  },[])
 
   return (
     <div className="App">
