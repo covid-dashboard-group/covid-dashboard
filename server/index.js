@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { default: axios } = require('axios')
 const express = require('express')
 const session = require('express-session')
 const covidCtrl = require('./controllers/covidTrackingProject')
@@ -25,6 +26,8 @@ app.use(express.json())
 app.get(`/api/daily/states`, covidCtrl.getStatesDaily)
 
 app.get('/api/tweets', tweetCtrl.getCovidTweets)
+
+
 
 
 app.listen(SERVER_PORT, ()=>{
