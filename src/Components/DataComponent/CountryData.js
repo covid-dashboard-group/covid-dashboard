@@ -21,10 +21,17 @@ const CountryData = (props) => {
                 };
 
                 for (let i = 0; i < res.data.length; i++) {
-                    countriesData.push({ ...indivCountries });
-                    countriesData[i].countryName = res.data[i].country;
-                    countriesData[i].positiveTotal = res.data[i].cases;
-                    countriesData[i].positiveIncrease = res.data[i].todayCases;
+                    if(res.data[i].country === "USA") {
+                        countriesData.unshift({...indivCountries});
+                        countriesData[0].countryName = res.data[i].country;
+                        countriesData[0].positiveTotal = res.data[i].cases;
+                        countriesData[0].positiveIncrease = res.data[i].todayCases;
+                    } else {
+                        countriesData.push({...indivCountries});
+                        countriesData[i].countryName = res.data[i].country;
+                        countriesData[i].positiveTotal = res.data[i].cases;
+                        countriesData[i].positiveIncrease = res.data[i].todayCases;
+                    }
                 }
 
                 console.log(countriesData);
