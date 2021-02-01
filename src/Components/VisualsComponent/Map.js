@@ -97,25 +97,25 @@ const Map = (props) => {
                         ['linear'],
                         ['get', 'positive'],
                         0,
-                        '#F2F12D',
+                        '#E9F268',
                         50000,
-                        '#EED322',
+                        '#E9D95E',
                         75000,
-                        '#E6B71E',
+                        '#E8BF53',
                         100000,
-                        '#DA9C20',
+                        '#E8A649',
                         250000,
-                        '#CA8323',
+                        '#E88C3E',
                         500000,
-                        '#B86B25',
+                        '#E77334',
                         750000,
-                        '#A25626',
+                        '#E75929',
                         1000000,
-                        '#8B4225',
+                        '#E7401F',
                         2500000,
-                        '#723122'
+                        '#E60D0A'
                     ],
-                          'fill-opacity': 0.75
+                          'fill-opacity': 0.80
                       },                      
                 })
                 
@@ -216,14 +216,14 @@ return (
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
       <div id="state-legend" class="legend">
     <h4>Population</h4>
-    <div><span style={{backgroundColor: '#723122'}}></span>2,500,000</div>
-    <div><span style={{backgroundColor: '#8b4225'}}></span>1,000,000</div>
-    <div><span style={{backgroundColor: '#a25626'}}></span>750,000</div>
-    <div><span style={{backgroundColor: '#b86b25'}}></span>500,000</div>
-    <div><span style={{backgroundColor: '#ca8323'}}></span>250,000</div>
-    <div><span style={{backgroundColor: '#da9c20'}}></span>100,000</div>
-    <div><span style={{backgroundColor: '#e6b71e'}}></span>75,000</div>
-    <div><span style={{backgroundColor: '#eed322'}}></span>50,000</div>    
+    <div><span style={{backgroundColor: '#e60d0a'}}></span>2,500,000</div>
+    <div><span style={{backgroundColor: '#e7401f'}}></span>1,000,000</div>
+    <div><span style={{backgroundColor: '#e75929'}}></span>750,000</div>
+    <div><span style={{backgroundColor: '#e77334'}}></span>500,000</div>
+    <div><span style={{backgroundColor: '#e88c3e'}}></span>250,000</div>
+    <div><span style={{backgroundColor: '#e8a649'}}></span>100,000</div>
+    <div><span style={{backgroundColor: '#e8bf53'}}></span>75,000</div>
+    <div><span style={{backgroundColor: '#e9d95e'}}></span>50,000</div>    
 </div>
     </Container>
   )
