@@ -68,10 +68,10 @@ const DeathsGraph = (props) => {
                     }}
                     colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 20, right: 90, bottom: 50, left: 80 }}
+                    margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
                     xScale={{ type: 'point', reverse: false }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.4~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -89,7 +89,7 @@ const DeathsGraph = (props) => {
                         tickPadding: 5,
                         tickRotation: 0,
                         legend: "Increase in Deaths",
-                        legendOffset: -70,
+                        legendOffset: -50,
                         legendPosition: 'middle'
                     }}
                     pointSize={10}
@@ -99,32 +99,6 @@ const DeathsGraph = (props) => {
                     pointLabelYOffset={-12}
                     enableArea={true}
                     useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'column',
-                            justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 80,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
-                                    }
-                                }
-                            ]
-                        }
-                    ]}
                 />
                 : <Loading />}
         </Container>

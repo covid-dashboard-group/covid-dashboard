@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from "react";
-import {Container} from "react-bootstrap";
-import {ResponsiveLine} from "@nivo/line";
+import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { ResponsiveLine } from "@nivo/line";
 import axios from "axios";
 import Loading from "../../Loading";
 
 const HospitalizedGraph = (props) => {
     const [finalData, setFinalData] = useState([]);
     const [maxY, setMaxY] = useState();
-    
+
     const dateFormat = (date) => {
         let strDate = date.toString();
         let strYear = strDate.substring(0, 4);
@@ -23,11 +23,11 @@ const HospitalizedGraph = (props) => {
             .then((res) => {
                 let formattedData = [
                     {
-                        id: "Currently Hospitalized",
+                        id: "Hospitalized",
                         data: []
                     },
                 ];
-            
+
                 let values = {
                     x: "date",
                     y: 0
@@ -37,8 +37,8 @@ const HospitalizedGraph = (props) => {
 
                 console.log(res.data[0]);
 
-                for(let i = 0; i < res.data.length; i++) {
-                    formattedData[0].data.push({...values});
+                for (let i = 0; i < res.data.length; i++) {
+                    formattedData[0].data.push({ ...values });
                     formattedData[0].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
                     formattedData[0].data[i].y = res.data[res.data.length - (i + 1)].hospitalizedCurrently;
                     caseCount.push(res.data[res.data.length - (i + 1)].hospitalizedCurrently);
@@ -50,13 +50,30 @@ const HospitalizedGraph = (props) => {
 
     return (
         <Container className="hospitalized-graph">
-            {finalData && maxY > 0 ?  
+            {finalData && maxY > 0 ?
                 <ResponsiveLine
+                    theme={{
+                        fontFamily: "'Raleway', Arial, Helvetica, sans-serif",
+                        fontSize: "11px",
+                        axis: {
+                            legend: {
+                                text: {
+                                    fontSize: "18px",
+                                },
+                            },
+                        },
+                        legends: {
+                            text: {
+                                fontSize: "12px"
+                            }
+                        }
+                    }}
+                    colors={{ scheme: 'set1' }}
+                    margin={{ top: -10, right: 20, bottom: 50, left: 80 }}
                     data={finalData}
-                    margin={{ top: 50, right: 100, bottom: 50, left: 100 }}
                     xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.6~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -64,7 +81,7 @@ const HospitalizedGraph = (props) => {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        tickValues: ["01/20/2020", "03/20/2020", "05/20/2020", "07/20/2020", "09/20/2020", "11/20/2020", "01/20/2021"],
+                        tickValues: ["01/20/2020", "05/20/2020", "09/20/2020", "01/20/2021"],
                         legend: 'Date',
                         legendOffset: 36,
                         legendPosition: 'middle',
@@ -86,34 +103,8 @@ const HospitalizedGraph = (props) => {
                     pointLabelYOffset={-12}
                     enableArea={true}
                     useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'column',
-                            justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 80,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
-                                    }
-                                }
-                            ]
-                        }
-                    ]}
                 />
-            : <Loading />}
+                : <Loading />}
         </Container>
     )
 }

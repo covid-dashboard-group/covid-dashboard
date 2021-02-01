@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {Container} from "react-bootstrap";
-import {ResponsiveLine} from "@nivo/line";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import { ResponsiveLine } from "@nivo/line";
 import axios from "axios";
 import Loading from "../../Loading";
 
@@ -25,14 +25,14 @@ const PercentChange = (props) => {
                         data: []
                     },
                 ];
-            
+
                 let values = {
                     x: "date",
                     y: 0
                 };
 
-                for(let i = 0; i < 7; i++) {
-                    formattedData[0].data.push({...values});
+                for (let i = 0; i < 7; i++) {
+                    formattedData[0].data.push({ ...values });
                     formattedData[0].data[i].x = dateFormat(res.data.data[7 - (i + 1)].date);
                     formattedData[0].data[i].y = res.data.data[7 - (i + 1)].cases.total.calculated.seven_day_change_percent;
                 }
@@ -42,13 +42,30 @@ const PercentChange = (props) => {
 
     return (
         <Container className="percentChange-graph">
-            {finalData ?  
+            {finalData ?
                 <ResponsiveLine
+                    theme={{
+                        fontFamily: "'Raleway', Arial, Helvetica, sans-serif",
+                        fontSize: "11px",
+                        axis: {
+                            legend: {
+                                text: {
+                                    fontSize: "18px",
+                                },
+                            },
+                        },
+                        legends: {
+                            text: {
+                                fontSize: "14px"
+                            }
+                        }
+                    }}
+                    colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 50, right: 100, bottom: 50, left: 100 }}
+                    margin={{ top: 10, right: 30, bottom: 50, left: 50 }}
                     xScale={{ type: 'point', reverse: false }}
                     yScale={{ type: 'linear', min: 0, max: 15, stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.2~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -66,7 +83,7 @@ const PercentChange = (props) => {
                         tickPadding: 5,
                         tickRotation: 0,
                         legend: "7 Day Percent Change",
-                        legendOffset: -70,
+                        legendOffset: -40,
                         legendPosition: 'middle'
                     }}
                     pointSize={10}
@@ -76,34 +93,8 @@ const PercentChange = (props) => {
                     pointLabelYOffset={-12}
                     enableArea={true}
                     useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'column',
-                            justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 80,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
-                                    }
-                                }
-                            ]
-                        }
-                    ]}
                 />
-            : <Loading />}
+                : <Loading />}
         </Container>
     )
 }

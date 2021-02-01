@@ -102,4 +102,10 @@
   @include header-styling();
   margin-left: 10px;
   background: linear-gradient(45deg, hsla(175, 79%, 50%, 1) 20%, hsla(82, 96%, 47%, 1) 100%);
+
+}
+.header-icon-hospitalizations {
+  @include header-styling();
+  margin-left: 10px;
+  background: linear-gradient(45deg, hsla(33, 100%, 53%, 1) 0%, rgb(241, 236, 86) 100%);
 }

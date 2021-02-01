@@ -30,20 +30,27 @@ const Article = (props) => {
 
   function handleTitleLength() {
     let shortTitle = []
-    let { title } = props.article
-    let titleArr = title.split('')
 
-    if (titleArr.length > 50) {
-      for (let i = 0; i < 50; i++) {
-        shortTitle.push(titleArr[i])
+    let { title } = props.article
+
+    if (title) {
+
+      let titleArr = title.split('')
+  
+      if (titleArr.length > 50) {
+        for (let i = 0; i < 50; i++) {
+          shortTitle.push(titleArr[i])
+        }
+        shortTitle.push('.')
+        shortTitle.push('.')
+        shortTitle.push('.')
+        let titleJoined = shortTitle.join('')
+        return titleJoined
+      } else {
+        return title
       }
-      shortTitle.push('.')
-      shortTitle.push('.')
-      shortTitle.push('.')
-      let titleJoined = shortTitle.join('')
-      return titleJoined
     } else {
-      return title
+      return "[Title Unavailable]"
     }
   }
 
@@ -66,7 +73,12 @@ const Article = (props) => {
           </Card.Title>
           <Card.Subtitle
             className='article-subtitle'>
-            {props.article.source.name}
+            <div>
+              {convertDate()}
+            </div>
+            <div>
+              {props.article.source.name}
+            </div>
           </Card.Subtitle>
         </Card.Body>
         {props.article.urlToImage ? (

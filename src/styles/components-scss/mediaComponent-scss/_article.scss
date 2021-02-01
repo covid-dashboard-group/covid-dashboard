@@ -43,6 +43,8 @@
 .article-subtitle {
   font-size: 12px;
   opacity: .6;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-title {

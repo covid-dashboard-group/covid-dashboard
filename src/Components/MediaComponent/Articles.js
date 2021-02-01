@@ -34,6 +34,9 @@ const Articles = (props) => {
 
   return (
     <Container className='Articles'>
+      <Container className='articles-header'>
+        <h1>News Articles</h1>
+      </Container>
       {props.news.articles ? (
         props.news.articles.map(element => {
           return (

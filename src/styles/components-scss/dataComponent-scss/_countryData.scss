@@ -4,6 +4,8 @@
 .CountryData {
   height: $topSectionHeight;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   max-height: $topSectionHeight;
   margin-bottom: $sectionMargin;
   overflow-y: scroll;
@@ -11,9 +13,14 @@
   font-size: 14px;
 }
 
+.CountryTable {
+  position: relative;
+}
+
 .country-table-header {
   font-weight: 700;
   line-height: 16px;
+  z-index: 1;
 }
 
 .country-name {

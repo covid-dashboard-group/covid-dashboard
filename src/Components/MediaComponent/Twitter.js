@@ -9,7 +9,11 @@ const Twitter = (props) => {
   
   return (
     <Container className='Twitter'>
-      {props.tweets ? (
+      <Container className='twitter-header'>
+        <img src='https://pbs.twimg.com/profile_images/1286024647171956736/bJ4lH6YI_400x400.png' />
+        <h1>@COVID19Tracking</h1>
+      </Container>
+      {props.tweets.length !== 0 ? (
         props.tweets.map(element => {
           return (
             <Tweet
