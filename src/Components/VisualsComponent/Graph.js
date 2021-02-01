@@ -3,6 +3,8 @@ import { Tabs, Tab, Container, DropdownButton, Dropdown } from "react-bootstrap"
 import NetPositiveGraph from './GraphComponents/NetPositiveGraph'
 import DeathsGraph from './GraphComponents/DeathsGraph'
 import CumulativeGraph from "./GraphComponents/CumulativeGraph";
+import PercentChangeGraph from "./GraphComponents/PercentChange";
+import HospitalizedGraph from "./GraphComponents/HospitalizedGraph";
 
 const Graph = (props) => {
 
@@ -32,6 +34,20 @@ const Graph = (props) => {
           className="GraphTab"
         >
           <CumulativeGraph />
+        </Tab>
+        <Tab
+          eventKey="percentChange"
+          title="7-Day Change"
+          className="GraphTab"
+        >
+          <PercentChangeGraph />
+        </Tab>
+        <Tab
+          eventKey="hospitalized"
+          title="Currently Hospitalized"
+          className="GraphTab"
+        >
+          <HospitalizedGraph />
         </Tab>
       </Tabs>
     </Container>

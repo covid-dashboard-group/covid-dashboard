@@ -62,26 +62,28 @@ const Map = (props) => {
         center: [-111, 33],
         zoom: 3
       })
+
+      
       map.on('load', function () {
         map.addSource('statesGeo', {
           'type': 'geojson',
           'data': stateGeojson
         });    
         
-        map.addLayer({
-          'id':'first',
-          'source':'statesGeo',
-          // "source-layer": 'properties',
-          'type':'symbol',
-          // 'paint': 
-          //       {
+        // map.addLayer({
+        //   'id':'first',
+        //   'source':'statesGeo',
+        //   // "source-layer": 'properties',
+        //   'type':'symbol',
+        //   // 'paint': 
+        //   //       {
             
-            //           'fill-opacity': 0.75
-            //       },
-            'layout': {
-              "text-field":['get','positive']
-            }
-          })
+        //     //           'fill-opacity': 0.75
+        //     //       },
+        //     'layout': {
+        //       "text-field":['get','positive']
+        //     }
+        //   })
           
           map.addLayer({
               'id':'seconds',
@@ -212,6 +214,17 @@ const Map = (props) => {
 return (
   <Container className='Map'>
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
+      <div id="state-legend" class="legend">
+    <h4>Population</h4>
+    <div><span style={{backgroundColor: '#723122'}}></span>2,500,000</div>
+    <div><span style={{backgroundColor: '#8b4225'}}></span>1,000,000</div>
+    <div><span style={{backgroundColor: '#a25626'}}></span>750,000</div>
+    <div><span style={{backgroundColor: '#b86b25'}}></span>500,000</div>
+    <div><span style={{backgroundColor: '#ca8323'}}></span>250,000</div>
+    <div><span style={{backgroundColor: '#da9c20'}}></span>100,000</div>
+    <div><span style={{backgroundColor: '#e6b71e'}}></span>75,000</div>
+    <div><span style={{backgroundColor: '#eed322'}}></span>50,000</div>    
+</div>
     </Container>
   )
 }
