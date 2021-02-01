@@ -75,10 +75,10 @@ const CumulativeGraph = (props) => {
                     }}
                     colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 10, right: 100, bottom: 50, left: 100 }}
+                    margin={{ top: 10, right: 20, bottom: 50, left: 100 }}
                     xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.9r"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -86,7 +86,7 @@ const CumulativeGraph = (props) => {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        tickValues: ["01/20/2020", "03/20/2020", "05/20/2020", "07/20/2020", "09/20/2020", "11/20/2020", "01/20/2021"],
+                        tickValues: ["01/20/20 20", "05/20/2020", "09/20/2020", "01/20/2021"],
                         legend: 'Date',
                         legendOffset: 36,
                         legendPosition: 'middle',
@@ -110,7 +110,7 @@ const CumulativeGraph = (props) => {
                     useMesh={true}
                     legends={[
                         {
-                            anchor: 'bottom-right',
+                            anchor: 'top',
                             direction: 'column',
                             justify: false,
                             translateX: 100,

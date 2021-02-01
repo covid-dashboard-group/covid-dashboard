@@ -4,6 +4,8 @@
 .CountryData {
   height: $topSectionHeight;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   max-height: $topSectionHeight;
   margin-bottom: $sectionMargin;
   overflow-y: scroll;

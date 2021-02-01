@@ -36,7 +36,7 @@ const StateData = (props) => {
   const renderData = (data, index) => {
     return (
         <tr key={index}>
-            <td>{data.stateName}</td>
+            <td className='state-name'>{data.stateName}</td>
             <td>{data.positiveTotal}</td>
             <td>{data.positiveIncrease}</td>
         </tr>
