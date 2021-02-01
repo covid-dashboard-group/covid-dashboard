@@ -4,6 +4,7 @@ import {Table} from "react-bootstrap";
 import stateInverter from "../../utils/stateInverter.js";
 import statesAbb from "../../utils/statesAbb.json";
 import axios from "axios";
+import Loading from '../Loading'
 
 const StateData = (props) => {
   const [finalData, setFinalData] =useState([]);
@@ -44,24 +45,24 @@ const StateData = (props) => {
 }
   return (
     <Container className='StateData'>
-      {finalData ? 
               <Table
                 striped
-              >
+                >
                   <thead
                     className='state-table-header'
-                  >
+                    >
                     <th>State</th>
                     <th>Positive Total</th>
                     <th>Positive Increase</th>
                 </thead>
+                    {finalData ? 
                   <tbody
                     className='state-table-body'
                   >
                     {finalData.map(renderData)}
                 </tbody>
+                    : <Loading />}
             </Table>
-      : null}
     </Container>
   )
 }

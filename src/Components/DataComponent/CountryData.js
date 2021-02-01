@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Table } from "react-bootstrap";
 import axios from "axios";
+import Loading from '../Loading'
 
 const CountryData = (props) => {
     const [finalData, setFinalData] = useState([]);
@@ -43,21 +44,22 @@ const CountryData = (props) => {
 
     return (
         <Container className='CountryData'>
-            {finalData ?
-                <Table
-                    striped
-                    // size='sm'
-                >
-                    <thead className='country-table-header'>
-                        <th>Country</th>
-                        <th>Positive Total</th>
-                        <th>Positive Increase</th>
-                    </thead>
+            <Table
+                striped
+                // size='sm'
+                className='CountryTable'
+            >
+                <thead className='country-table-header'>
+                    <th>Country</th>
+                    <th>Positive Total</th>
+                    <th>Positive Increase</th>
+                </thead>
+                {finalData ?
                     <tbody className='country-table-body'>
                         {finalData.map(renderData)}
                     </tbody>
-                </Table>
-                : null}
+                    : <Loading />}
+            </Table>
         </Container>
     )
 }

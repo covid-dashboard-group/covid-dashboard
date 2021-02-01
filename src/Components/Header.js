@@ -4,6 +4,7 @@ import Graphic1 from '../assets/Graphic-1.png'
 import Graphic2 from '../assets/Graphic-2.png'
 import Graphic3 from '../assets/Graphic-3.png'
 import Graphic4 from '../assets/Graphic-4.png'
+import Graphic5 from '../assets/Graphic-5.png'
 import { Row, Container, Col } from 'react-bootstrap'
 
 const Header = (props) => {
@@ -15,7 +16,7 @@ const Header = (props) => {
       <Row className='Header'>
         <Col
           className='brand-logo'
-          md={2}
+          md={1}
           xs={12}
         >
           <DashboardLogo className='logo' />
@@ -23,13 +24,13 @@ const Header = (props) => {
 
         <Col
           className='header-white-space'
-          md={2}
+          md={1}
         >
         </Col>
 
         <Col
           className='header-icons'
-          md={8}
+          md={10}
           xs={12}
         >
           <Container
@@ -70,6 +71,21 @@ const Header = (props) => {
               />
             </Container>
             <p className='header-icon-text'>TOTAL INFECTIONS</p>
+          </Container>
+
+          <Container
+            className='header-icon-hospitalizations'
+          >
+            <Container
+              className='header-icon-data'
+            >
+              <p>{props.natData['Total Deaths_text']}</p>
+              <img
+                src={Graphic5}
+                className='header-graphic'
+              />
+            </Container>
+            <p className='header-icon-text'>HOSPITALIZATIONS</p>
           </Container>
 
           <Container
