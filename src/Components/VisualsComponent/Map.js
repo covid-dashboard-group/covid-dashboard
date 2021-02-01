@@ -30,12 +30,12 @@ const Map = (props) => {
 
     return geoData
   }
-  const countyGeoMaker=(geoData,covidData)=>{
+  const countyGeoMaker=(geoData)=>{
     for(let i=0;i<geoData.features.length;i++){
-      for(let j=0;j<props.countyData;j++){
-        console.log(geoData.features[i].properties['AFFGEOID'],props.countyData[j]['fips'])
+      for(let j=0;j<props.countyData.length;j++){
+        
         if(geoData.features[i].properties['AFFGEOID'].includes(`US${props.countyData[j]['fips']}`)){
-          geoData.features[i].properties={...geoData.features[i].properties,...props.countyData[j],isCounty:true}
+          geoData.features[i].properties={...geoData.features[i].properties,...props.countyData[j],...props.countyData[j].metrics,isCounty:true}
         }
       }
     }
@@ -76,9 +76,9 @@ const Map = (props) => {
     } 
   },[setStateGeojson,props.allStatesData])
 
-  useEffect(()=>{
-    axios.get()
-  })
+  // useEffect(()=>{
+  //   axios.get()
+  // })
   useEffect(() => {
     if (stateGeojson&&countyGeojson){
 
@@ -121,6 +121,8 @@ const Map = (props) => {
               'source':'statesGeo',
               // "source-layer": 'properties',
               'type':'fill',
+              'filter': ['==', 'isState', true],
+              'maxzoom':zoomThreshold,
               'paint': 
                     {
                       'fill-color': [
@@ -193,31 +195,31 @@ const Map = (props) => {
                                   {
                                         'id': 'county-population',
                                         'source': 'cb_2018_us_county_20m',                                        
-                                        // 'minzoom': zoomThreshold,
+                                        'minzoom': zoomThreshold,
                                         'type': 'fill',
-                                        // 'filter': ['==', 'isCounty', true],
+                                        'filter': ['==', 'isCounty', true],
                                         'paint': {
                                               'fill-color': [
                                                     'interpolate',
                                                     ['linear'],
-                                                    ['get', 'population'],
+                                                    ['get', 'caseDensity'],
                                                     0,
                                                     '#F2F12D',
-                                                    100,
+                                                    10,
                                                     '#EED322',
-                                                    1000,
+                                                    20,
                                                     '#E6B71E',
-                                                    5000,
+                                                    30,
                                                     '#DA9C20',
-                                                    10000,
+                                                    40,
                                                     '#CA8323',
-                                                    50000,
+                                                    50,
                                                     '#B86B25',
-                                                    100000,
+                                                    60,
                                                     '#A25626',
-                                                    500000,
+                                                    70,
                                                     '#8B4225',
-                                                    1000000,
+                                                    90,
                                                     '#723122'
                                                 ],
                                                 'fill-opacity': 0.75
