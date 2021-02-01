@@ -68,10 +68,10 @@ const DeathsGraph = (props) => {
                     }}
                     colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 20, right: 30, bottom: 50, left: 60 }}
+                    margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
                     xScale={{ type: 'point', reverse: false }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.4r"
+                    yFormat=" >-.4~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{

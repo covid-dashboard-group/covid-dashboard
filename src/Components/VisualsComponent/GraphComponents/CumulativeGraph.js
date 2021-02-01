@@ -78,7 +78,7 @@ const CumulativeGraph = (props) => {
                     margin={{ top: 10, right: 20, bottom: 50, left: 100 }}
                     xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.9r"
+                    yFormat=" >-.9~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{

@@ -62,10 +62,10 @@ const PercentChange = (props) => {
                     }}
                     colors={{ scheme: 'set1' }}
                     data={finalData}
-                    margin={{ top: 20, right: 30, bottom: 50, left: 50 }}
+                    margin={{ top: 10, right: 30, bottom: 50, left: 50 }}
                     xScale={{ type: 'point', reverse: false }}
                     yScale={{ type: 'linear', min: 0, max: 15, stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.2~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{

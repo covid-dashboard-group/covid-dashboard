@@ -64,11 +64,11 @@ const NetPositiveGraph = (props) => {
                         }}
                         colors={{ scheme: 'set1' }}
                         data={finalData}
-                        margin={{ top: 20, right: 20, bottom: 50, left: 80 }}
+                        margin={{ top: 10, right: 20, bottom: 50, left: 80 }}
                         xScale={{ type: 'point' }
                         }
                         yScale={{ type: 'linear', min: 0, max: 300000, stacked: true, reverse: false }}
-                        yFormat=" >-.6r"
+                        yFormat=" >-.6~f"
                         axisTop={null}
                         axisRight={null}
                         axisBottom={{

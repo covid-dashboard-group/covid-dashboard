@@ -69,11 +69,11 @@ const HospitalizedGraph = (props) => {
                         }
                     }}
                     colors={{ scheme: 'set1' }}
-                    margin={{ top: 10, right: 20, bottom: 50, left: 80 }}
+                    margin={{ top: -10, right: 20, bottom: 50, left: 80 }}
                     data={finalData}
                     xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.2f"
+                    yFormat=" >-.6~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
