@@ -47,9 +47,9 @@ const Map = (props) => {
 
   useEffect(()=>{
     if(stateGeojson&&props.allStatesData.length>0){
-      console.log('got both')
-      console.log('geo',stateGeojson)
-      console.log('props',props.allStatesData)
+      // console.log('got both')
+      // console.log('geo',stateGeojson)
+      // console.log('props',props.allStatesData)
     } 
   },[setStateGeojson,props.allStatesData])
   useEffect(() => {

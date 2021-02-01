@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
-import { Card } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Card, Modal } from 'react-bootstrap'
 
 const Article = (props) => {
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   /*
   news object: {
     articles: [
@@ -43,25 +47,60 @@ const Article = (props) => {
     }
   }
 
+  function convertDate() {
+    const dateArr = props.article.publishedAt.split('-')
+    const day = dateArr[2][0] + dateArr[2][1]
+    dateArr[2] = day
+
+    const finalDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`
+    
+    return finalDate
+  }
+
   return (
-    <Card className='Article'>
-      <Card.Body className='article-body'>
-        <Card.Title className='article-title'>
-          {handleTitleLength()}
-        </Card.Title>
-        <Card.Subtitle
-          className='article-subtitle'>
-          {props.article.source.name}
-        </Card.Subtitle>
-      </Card.Body>
-      {props.article.urlToImage ? (
-        <Card.Img
-          src={props.article.urlToImage}
-          variant='side'
-          className='article-img'
-        />
-      ) : <div className='article-no-img'></div>}
-    </Card>
+    <div>
+      <Card className='Article' onClick='window.open('>
+        <Card.Body className='article-body'>
+          <Card.Title className='article-title'>
+            {handleTitleLength()}
+          </Card.Title>
+          <Card.Subtitle
+            className='article-subtitle'>
+            {props.article.source.name}
+          </Card.Subtitle>
+        </Card.Body>
+        {props.article.urlToImage ? (
+          <Card.Img
+            src={props.article.urlToImage}
+            variant='side'
+            className='article-img'
+          />
+        ) : <div className='article-no-img'></div>}
+      </Card>
+{/* 
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title className='modal-title'>
+            <div>
+              {props.article.title}
+            </div>
+            <div>
+              {props.article.source.name}
+            </div>
+            <div>
+              {props.article.author}
+            </div>
+            <div>
+              {convertDate()}
+            </div>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {props.article.description}
+          {props.article.content}
+        </Modal.Body>
+      </Modal> */}
+    </div>
   )
 }
 
