@@ -8,7 +8,7 @@ const Twitter = (props) => {
   useEffect(() => console.log(props.tweets))
   
   return (
-    <Container className='Tweets'>
+    <Container className='Twitter'>
       {props.tweets ? (
         props.tweets.map(element => {
           return (
