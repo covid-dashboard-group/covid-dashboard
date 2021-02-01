@@ -2,7 +2,11 @@
 @import '../../base-scss/variables';
 
 .Twitter {
-  border: 1px black solid;
+  width: 100%;
   height: $bottomSectionHeight;
+  max-height: $bottomSectionHeight;
   margin-bottom: $sectionMargin;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
 }
