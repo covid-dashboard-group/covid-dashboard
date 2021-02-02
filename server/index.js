@@ -24,6 +24,7 @@ app.use(express.json())
 // app.get(`/api/daily/national`, covidCtrl.getNationalDaily) 
 
 app.get(`/api/daily/states`, covidCtrl.getStatesDaily)
+app.get('/api/natBackup', covidCtrl.getNatBackup)
 
 app.get('/api/tweets', tweetCtrl.getCovidTweets)
 

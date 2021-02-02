@@ -49,13 +49,13 @@ const Header = (props) => {
             <Container
               className='header-icon-data'
             >
-              <p>{props.natData['Active Cases_text']}</p>
+              <p>{props.natData['Active Cases_text']||props.natData2['hospitalizedCurrently']}</p>
               <img
                 src={Graphic1}
                 className='header-graphic'
               />
             </Container>
-            <p className='header-icon-text'>ACTIVE INFECTIONS</p>
+            <p className='header-icon-text'>{props.natData['Active Cases_text']?'ACTIVE INFECTIONS':'CURRENTLY HOSPITALIZED'}</p>
           </Container>
 
           <Container
@@ -64,13 +64,13 @@ const Header = (props) => {
             <Container
               className='header-icon-data'
             >
-              <p>{props.natData['Total Cases_text']}</p>
+              <p>{props.natData['Total Cases_text']||props.natData2['positive']}</p>
               <img
                 src={Graphic4}
                 className='header-graphic'
               />
             </Container>
-            <p className='header-icon-text'>TOTAL INFECTIONS</p>
+            <p className='header-icon-text'>{props.natData['Total Cases_text']?'TOTAL INFECTIONS':'POSITIVE'}</p>
           </Container>
 
           <Container
@@ -79,7 +79,7 @@ const Header = (props) => {
             <Container
               className='header-icon-data'
             >
-              <p>{props.natData['Total Deaths_text']}</p>
+              <p>{props.natData2['hospitalized']}</p>
               <img
                 src={Graphic5}
                 className='header-graphic'
@@ -94,7 +94,7 @@ const Header = (props) => {
             <Container
               className='header-icon-data'
             >
-              <p>{props.natData['Total Deaths_text']}</p>
+              <p>{props.natData['Total Deaths_text']||props.natData2['death']}</p>
               <img
                 src={Graphic3}
                 className='header-graphic'

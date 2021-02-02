@@ -21,6 +21,7 @@ function App() {
   const [news, setNews]=useState([])
   const [tweets, setTweets]=useState([])
   const [hospitalized, setHospitalized] = useState(null)
+  const [natData2, setNatData2]= useState({})
 
   useEffect(()=>{
     if(allStatesData){     
@@ -56,16 +57,22 @@ function App() {
   }, [])
   // Get National Data
 
-  useEffect(() => {
-    axios.get('https://covid-19.dataflowkit.com/v1/usa')
-      .then(res => setNatData(res.data))
-      .catch(e => console.log(e))
-  }, [])
+  // useEffect(() => {
+  //   axios.get('https://covid-19.dataflowkit.com/v1/usa')
+  //     .then(res => setNatData(res.data))
+  //     .catch(e => console.log(e))
+  // }, [])
+  //Get Backup National Data
+  useEffect(()=>{
+    axios.get('/api/natBackup')
+    .then(res=>setNatData2(res.data[0]))
+    .catch(e=>console.log(e))
+  },[])
 
   //Get State Data
   useEffect(() => {
     console.log('getting states')
-    axios.get('api/daily/states')
+    axios.get('/api/daily/states')
       .then(res => setAllStatesData(res.data))
       .catch(e => console.log(e))
   }, [])
@@ -81,12 +88,12 @@ function App() {
   //news
 
   const getLocalNews = (inputState) => {
-    axios.get(`https://newsapi.org/v2/everything?q=${'COVID ' + inputState}&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=100&page=1`)
+    axios.get(`https://newsapi.org/v2/everything?q=${'COVID ' + inputState}&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=20&page=1`)
       .then(res => setNews(res.data))
       .catch(e => console.log(e))
   }
   const getNationalNews = () => {
-    axios.get(`https://newsapi.org/v2/everything?q=COVID United States&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=100&page=1`)
+    axios.get(`https://newsapi.org/v2/everything?q=COVID United States&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=20&page=1`)
       .then(res => setNews(res.data))
       .catch(e => console.log(e))
   }
@@ -105,7 +112,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header natData={natData} />
+      <Header 
+      natData={natData}
+            natData2={natData2} />
       <Container className='display' fluid>
         <Row>
           <Col xs={12} md={3} className='Col'>

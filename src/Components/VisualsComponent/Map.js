@@ -220,6 +220,7 @@ const Map = (props) => {
                                                     70,
                                                     '#8B4225',
                                                     90,
+                                                    //case density goes up to 200
                                                     '#723122'
                                                 ],
                                                 'fill-opacity': 0.75
@@ -227,6 +228,7 @@ const Map = (props) => {
                                         },
                                         'waterway-label'
                                     );
+
   // });
   
   const stateLegendEl = document.getElementById('state-legend');
