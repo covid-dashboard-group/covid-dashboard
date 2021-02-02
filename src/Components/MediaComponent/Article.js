@@ -36,7 +36,7 @@ const Article = (props) => {
     if (title) {
 
       let titleArr = title.split('')
-  
+
       if (titleArr.length > 50) {
         for (let i = 0; i < 50; i++) {
           shortTitle.push(titleArr[i])
@@ -60,36 +60,38 @@ const Article = (props) => {
     dateArr[2] = day
 
     const finalDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`
-    
+
     return finalDate
   }
 
   return (
     <div>
-      <Card className='Article' onClick='window.open('>
-        <Card.Body className='article-body'>
-          <Card.Title className='article-title'>
-            {handleTitleLength()}
-          </Card.Title>
-          <Card.Subtitle
-            className='article-subtitle'>
-            <div>
-              {convertDate()}
-            </div>
-            <div>
-              {props.article.source.name}
-            </div>
-          </Card.Subtitle>
-        </Card.Body>
-        {props.article.urlToImage ? (
-          <Card.Img
-            src={props.article.urlToImage}
-            variant='side'
-            className='article-img'
-          />
-        ) : <div className='article-no-img'></div>}
-      </Card>
-{/* 
+      <a href={props.article.url} target='_blank' className='article-link'>
+        <Card className='Article' onClick='window.open('>
+          <Card.Body className='article-body'>
+            <Card.Title className='article-title'>
+              {handleTitleLength()}
+            </Card.Title>
+            <Card.Subtitle
+              className='article-subtitle'>
+              <div>
+                {convertDate()}
+              </div>
+              <div>
+                {props.article.source.name}
+              </div>
+            </Card.Subtitle>
+          </Card.Body>
+          {props.article.urlToImage ? (
+            <Card.Img
+              src={props.article.urlToImage}
+              variant='side'
+              className='article-img'
+            />
+          ) : <div className='article-no-img'></div>}
+        </Card>
+      </a>
+      {/* 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title className='modal-title'>
