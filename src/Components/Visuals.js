@@ -8,7 +8,8 @@ const Visuals = (props) => {
   return (
     <Container className='Visuals'>
       <Map
-      allStatesData={props.allStatesData} />
+      allStatesData={props.allStatesData}
+      countyData={props.countyData} />
       <Graph />
     </Container>
   )

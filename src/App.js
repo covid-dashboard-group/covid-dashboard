@@ -9,19 +9,29 @@ import dotenv from 'dotenv'
 import statesAbb from './utils/statesAbb.json'
 import stateInverter from './utils/stateInverter'
 
-const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API } = process.env;
+const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API, REACT_APP_COVID_ACT_NOW} = process.env;
 
 function App() {
-  const [state, setState] = useState('')
-  const [pos, setPos] = useState({ longitude: null, latitude: null })
-  const [natData, setNatData] = useState({})
-  const [allStatesData, setAllStatesData] = useState([])
-  const [stateData, setStateData] = useState({})
-  const [news, setNews] = useState([])
-  const [tweets, setTweets] = useState([])
+  const [state, setState]=useState('')
+  const [pos, setPos]= useState({longitude:null,latitude:null})
+  const [natData, setNatData]=useState({})
+  const [allStatesData, setAllStatesData]=useState([])
+  const [stateData, setStateData]=useState({})
+  const [countyData, setCountyData]= useState([])
+  const [news, setNews]=useState([])
+  const [tweets, setTweets]=useState([])
+  const [hospitalized, setHospitalized] = useState(null)
 
-
-  const successLocation = (e) => {
+  useEffect(()=>{
+    if(allStatesData){     
+      const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
+      console.log(result)
+      setHospitalized(result)
+    }
+  },[allStatesData])
+  
+  
+  const successLocation=(e)=>{
     console.log('location found')
     const { longitude, latitude } = e.coords
     axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${REACT_APP_MAPBOX_APIKEY}`)
@@ -62,12 +72,11 @@ function App() {
 
   //once state and natData available, filter to get the state data
 
-  useEffect(() => {
-    if (state && allStatesData) {
-      // console.log('setting state data')
-      setStateData(allStatesData.filter(e => e.state === state)[0])
-    }
-  }, [state, allStatesData])
+  useEffect(()=>{
+    if(state&&allStatesData){      
+      setStateData(allStatesData.filter(e=>e.state===state)[0])     
+    }    
+  },[state,allStatesData])
 
   //news
 
@@ -81,13 +90,18 @@ function App() {
       .then(res => setNews(res.data))
       .catch(e => console.log(e))
   }
-
-  // twitter
-  useEffect(() => {
+  //twitter
+  useEffect(()=>{
     axios.get(`/api/tweets`)
-      .then(res => setTweets(res.data))
-      .catch(e => console.log(e))
-  }, [])
+    .then(res=>setTweets(res.data))
+    .catch(e=>console.log(e))
+  },[])
+  //county data
+  useEffect(()=>{
+    axios.get(`https://api.covidactnow.org/v2/counties.json?apiKey=${REACT_APP_COVID_ACT_NOW}`)
+    .then(res=>setCountyData(res.data))
+    .catch(e=>console.log(e))
+  },[])
 
   return (
     <div className="App">
@@ -99,8 +113,8 @@ function App() {
           </Col>
           <Col xs={12} md={6} className='Col'>
             <Visuals
-              allStatesData={allStatesData}
-            />
+            allStatesData={allStatesData}
+            countyData={countyData} />
           </Col>
           <Col xs={12} md={3} className='Col'>
             <Media
