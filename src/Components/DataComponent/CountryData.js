@@ -11,7 +11,7 @@ const CountryData = (props) => {
         axios
             .get("https://corona.lmao.ninja/v2/countries?yesterday&sort")
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 let countriesData = [];
 
                 let indivCountries = {
@@ -34,7 +34,7 @@ const CountryData = (props) => {
                     }
                 }
 
-                console.log(countriesData);
+                // console.log(countriesData);
                 setFinalData(countriesData);
             })
     }, [])

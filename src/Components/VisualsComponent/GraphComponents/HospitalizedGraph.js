@@ -35,7 +35,7 @@ const HospitalizedGraph = (props) => {
 
                 let caseCount = [];
 
-                console.log(res.data[0]);
+                // console.log(res.data[0]);
 
                 for (let i = 0; i < res.data.length; i++) {
                     formattedData[0].data.push({ ...values });
