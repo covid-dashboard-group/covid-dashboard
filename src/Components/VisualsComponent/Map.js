@@ -231,22 +231,59 @@ const Map = (props) => {
   
   const stateLegendEl = document.getElementById('state-legend');
   const countyLegendEl = document.getElementById('county-legend');
+
+  const stateHover = 
   map.on('zoom', function () {
         if (map.getZoom() > zoomThreshold) {
               stateLegendEl.style.display = 'none';
               countyLegendEl.style.display = 'block';
+            map.on('mousemove',(e)=>{
+              const counties=map.queryRenderedFeatures(e.point, {
+                    layers: ['county-population']
+                  })
+                 if(counties.length>0){            
+      document.getElementById('pd').innerHTML = '<h3><strong>' + counties[0].properties.county + '</strong></h3><p><strong><em>' + counties[0].properties.caseDensity.toFixed(2) + '</strong> Case Density</em></p>'+((counties[0].properties.icuCapacityRatio!=='null')?('<strong><em>' + counties[0].properties.icuCapacityRatio.toFixed(2) + '</strong> icuCapacityRatio</em></p>'):'<p>Unavailable</p>')
+      
+    }
+    else {
+      document.getElementById('pd').innerHTML = '<p>Hover over a county!</p>';
+    }
+                })
           } else {
           stateLegendEl.style.display = 'block';
           countyLegendEl.style.display = 'none';
+
+          map.on('mousemove',(e)=>{
+            const states= map.queryRenderedFeatures(e.point, {
+              layers: ['seconds']
+            })
+            
+            if(states.length>0){
+              document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME + '</strong></h3><p><strong><em>' + states[0].properties.positive + '</strong> Positive</em></p><p><strong><em>' + (+states[0].properties.hospitalized||+states[0].properties.hospitalizedCumulative||+states[0].properties.hospitalizedCurrently) + '</strong> Hospitalized</em></p>'
+              
+            }
+            else {
+              document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
+            }
+          })
       }
     })
   map.on('mousemove',(e)=>{
     const states= map.queryRenderedFeatures(e.point, {
-      layers: ['seconds','county-population']
+      layers: ['seconds']
     })
+    // const counties=map.queryRenderedFeatures(e.point, {
+    //   layers: ['seconds','county-population']
+    // })
     if(states.length>0){
-      document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.county + '</strong></h3><p><strong><em>' + states[0].properties.caseDensity + '</strong> infected people per square mile</em></p>'
+      document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.NAME + '</strong></h3><p><strong><em>' + states[0].properties.positive + '</strong> Positive</em></p><p><strong><em>' + (+states[0].properties.hospitalized||+states[0].properties.hospitalizedCumulative||+states[0].properties.hospitalizedCurrently) + '</strong> Hospitalized</em></p>'
+      
     }
+    //  if(map.getZoom() > zoomThreshold&&counties.length>0){    
+    //    console.log(map.getZoom())  
+    //   document.getElementById('pd').innerHTML = '<h3><strong>' + counties[0].properties.county + '</strong></h3><p><strong><em>' + counties[0].properties.caseDensity + '</strong> Case Density</em></p>'
+      
+    // }
     else {
       document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
     }
@@ -282,20 +319,9 @@ return (
     <div><span style={{backgroundColor: '#eed322'}}></span>0</div>
 </div>
 
-<div class='map-overlay' id='features'><h2>US population density</h2><div id='pd'><p>Hover over a state!</p></div></div>
+<div className='map-overlay' id='features'><h5>US population density</h5><div id='pd'><p>Hover over a state!</p></div></div>
 
 
-{/* <div id="info-legend" className="legend" style={{display: 'none'}}>
-<h4>Info</h4>
-<div><span style={{backgroundColor: '#723122'}}></span>70</div>
-    <div><span style={{backgroundColor: '#8b4225'}}></span>60</div>
-    <div><span style={{backgroundColor: '#a25626'}}></span>50</div>
-    <div><span style={{backgroundColor: '#b86b25'}}></span>40</div>
-    <div><span style={{backgroundColor: '#ca8323'}}></span>30</div>
-    <div><span style={{backgroundColor: '#da9c20'}}></span>20</div>
-    <div><span style={{backgroundColor: '#e6b71e'}}></span>10</div>
-    <div><span style={{backgroundColor: '#eed322'}}></span>0</div>
-</div> */}
     </Container>
   )
 }
