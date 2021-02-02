@@ -2,18 +2,21 @@
 @import '../../base-scss/variables';
 
 .Graph {
-  // border: 1px black solid;
   height: $bottomSectionHeight;
   margin-bottom: $sectionMargin;
 }
-
-// .GraphTabs {
-//   height: 100%;
-// }
 
 .GraphTab {
   height: 38vh;
   width: 100%;
   min-width: 0;
   min-height: 0;
+  font-size: 14px;
+}
+
+.GraphTabs {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: nowrap;
 }

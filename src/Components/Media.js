@@ -7,8 +7,8 @@ const Media = (props) => {
 
   return (
     <Container className='Media'>
-      {/* <Articles news={props.news}/> */}
-      <Twitter />
+      <Articles news={props.news}/>
+      <Twitter tweets={props.tweets}/>
     </Container>
   )
 }

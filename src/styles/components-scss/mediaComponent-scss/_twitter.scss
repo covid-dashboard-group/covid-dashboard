@@ -2,7 +2,32 @@
 @import '../../base-scss/variables';
 
 .Twitter {
-  border: 1px black solid;
+  width: 100%;
   height: $bottomSectionHeight;
+  max-height: $bottomSectionHeight;
   margin-bottom: $sectionMargin;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.twitter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+
+  h1 {
+    font-size: 18px;
+  }
+
+  img {
+    height: 40px;
+    border-radius: 50%;
+  }
 }

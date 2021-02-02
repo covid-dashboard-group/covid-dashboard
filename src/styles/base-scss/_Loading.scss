@@ -10,17 +10,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // height: 9vh;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  height: 100%;
+  height: $bottomSectionHeight;
   width: 100%;
 }
 
 .LoadingBox {
   height: 12vh;
-  position: absolute;
+  position: relative;
   top: 15%;
   animation: rotate 10s;
   animation-iteration-count: infinite;
@@ -30,8 +26,8 @@
 .LoadingText {
   height: 12vh;
   z-index: 1000;
-  position: absolute;
-  top: 15%;
+  position: relative;
+  top: -15%;
 }
 
 @keyframes rotate {

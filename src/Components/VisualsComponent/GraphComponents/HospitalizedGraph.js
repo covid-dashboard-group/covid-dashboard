@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Container } from 'react-bootstrap'
-import { ResponsiveLine } from '@nivo/line';
+import { Container } from "react-bootstrap";
+import { ResponsiveLine } from "@nivo/line";
 import axios from "axios";
-import Loading from '../../Loading'
+import Loading from "../../Loading";
 
-const DeathsGraph = (props) => {
+const HospitalizedGraph = (props) => {
     const [finalData, setFinalData] = useState([]);
     const [maxY, setMaxY] = useState();
 
@@ -23,7 +23,7 @@ const DeathsGraph = (props) => {
             .then((res) => {
                 let formattedData = [
                     {
-                        id: "Deaths",
+                        id: "Hospitalized",
                         data: []
                     },
                 ];
@@ -35,11 +35,13 @@ const DeathsGraph = (props) => {
 
                 let caseCount = [];
 
-                for (let i = 0; i < 7; i++) {
-                    formattedData[0].data.push({...values});
-                    formattedData[0].data[i].x = dateFormat(res.data[7 - (i + 1)].date);
-                    formattedData[0].data[i].y = res.data[7 - (i + 1)].deathIncrease;
-                    caseCount.push(res.data[i].deathIncrease);
+                console.log(res.data[0]);
+
+                for (let i = 0; i < res.data.length; i++) {
+                    formattedData[0].data.push({ ...values });
+                    formattedData[0].data[i].x = dateFormat(res.data[res.data.length - (i + 1)].date);
+                    formattedData[0].data[i].y = res.data[res.data.length - (i + 1)].hospitalizedCurrently;
+                    caseCount.push(res.data[res.data.length - (i + 1)].hospitalizedCurrently);
                 }
                 setFinalData(formattedData);
                 setMaxY(Math.max(...caseCount));
@@ -47,8 +49,8 @@ const DeathsGraph = (props) => {
     }, [])
 
     return (
-        <Container className="deaths-graph">
-            {finalData ?
+        <Container className="hospitalized-graph">
+            {finalData && maxY > 0 ?
                 <ResponsiveLine
                     theme={{
                         fontFamily: "'Raleway', Arial, Helvetica, sans-serif",
@@ -62,16 +64,16 @@ const DeathsGraph = (props) => {
                         },
                         legends: {
                             text: {
-                                fontSize: "14px"
+                                fontSize: "12px"
                             }
                         }
                     }}
                     colors={{ scheme: 'set1' }}
+                    margin={{ top: -10, right: 20, bottom: 50, left: 80 }}
                     data={finalData}
-                    margin={{ top: 10, right: 30, bottom: 50, left: 60 }}
-                    xScale={{ type: 'point', reverse: false }}
+                    xScale={{ type: 'point' }}
                     yScale={{ type: 'linear', min: 0, max: maxY + (maxY / 2), stacked: true, reverse: false }}
-                    yFormat=" >-.4~f"
+                    yFormat=" >-.6~f"
                     axisTop={null}
                     axisRight={null}
                     axisBottom={{
@@ -79,20 +81,22 @@ const DeathsGraph = (props) => {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
+                        tickValues: ["01/20/2020", "05/20/2020", "09/20/2020", "01/20/2021"],
                         legend: 'Date',
                         legendOffset: 36,
-                        legendPosition: 'middle'
+                        legendPosition: 'middle',
                     }}
                     axisLeft={{
                         orient: 'left',
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: "Increase in Deaths",
-                        legendOffset: -50,
+                        legend: "Currently Hospitalized",
+                        legendOffset: -75,
                         legendPosition: 'middle'
                     }}
-                    pointSize={10}
+                    enableGridX={false}
+                    pointSize={1}
                     pointColor={{ theme: 'background' }}
                     pointBorderWidth={2}
                     pointBorderColor={{ from: 'serieColor' }}
@@ -105,4 +109,4 @@ const DeathsGraph = (props) => {
     )
 }
 
-export default DeathsGraph
+export default HospitalizedGraph

@@ -10,7 +10,7 @@ const Visuals = (props) => {
       <Map
       allStatesData={props.allStatesData}
       countyData={props.countyData} />
-      {/* <Graph /> */}
+      <Graph />
     </Container>
   )
 }
