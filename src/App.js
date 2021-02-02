@@ -26,14 +26,14 @@ function App() {
   useEffect(()=>{
     if(allStatesData){     
       const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
-      console.log(result)
+      // console.log(result)
       setHospitalized(result)
     }
   },[allStatesData])
   
   
   const successLocation=(e)=>{
-    console.log('location found')
+    // console.log('location found')
     const { longitude, latitude } = e.coords
     axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${REACT_APP_MAPBOX_APIKEY}`)
       .then(res => {
@@ -57,11 +57,11 @@ function App() {
   }, [])
   // Get National Data
 
-  // useEffect(() => {
-  //   axios.get('https://covid-19.dataflowkit.com/v1/usa')
-  //     .then(res => setNatData(res.data))
-  //     .catch(e => console.log(e))
-  // }, [])
+  useEffect(() => {
+    axios.get('https://covid-19.dataflowkit.com/v1/usa')
+      .then(res => setNatData(res.data))
+      .catch(e => console.log(e))
+  }, [])
   //Get Backup National Data
   useEffect(()=>{
     axios.get('/api/natBackup')
@@ -117,15 +117,15 @@ function App() {
             natData2={natData2} />
       <Container className='display' fluid>
         <Row>
-          <Col xs={12} md={3} className='Col'>
+          <Col xs={12} sm={12} md={3} className='Col'>
             <Data />
           </Col>
-          <Col xs={12} md={6} className='Col'>
+          <Col xs={12} sm={12} md={6} className='Col'>
             <Visuals
             allStatesData={allStatesData}
             countyData={countyData} />
           </Col>
-          <Col xs={12} md={3} className='Col'>
+          <Col xs={12} sm={12} md={3} className='Col'>
             <Media
               news={news}
               tweets={tweets}
