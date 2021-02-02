@@ -7,19 +7,24 @@
   margin-bottom: $sectionMargin;
 }
 .legend{
-  
+  font-family: $globalFontFamily;
   background-color: #fff;
-  border-radius: 3px;  
+  border-radius: 10px;  
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 12px;
   padding: 10px;
-  position: absolute;  
+  position: absolute;
   z-index: 1;
-  top: 0;
+  top: 4px;
+  left: 4px;
+  margin: 0 0 0 31px;
+  display: flex;
+  flex-direction: column;
 }
 
 .legend h4 {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
+  font-size: 16px;
 }
 
 .legend div span {
@@ -28,10 +33,15 @@
   height: 10px;
   margin-right: 5px;
   width: 10px;
+
 }
 .map-overlay{
   background-color: salmon;
-  position: absolute;
-  left: 10;
-  top: 308px;
+  position: relative;
+  display: flex;
+  // top: 308px;
+  // bottom: 0;
+  font-family: $globalFontFamily;
+  border-radius: 10px;
+  padding: 10px;
 }

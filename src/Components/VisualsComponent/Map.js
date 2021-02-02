@@ -130,23 +130,23 @@ const Map = (props) => {
                         ['linear'],
                         ['get', 'positive'],
                         0,
-                        '#F2F12D',
+                        '#e9f268',
                         50000,
-                        '#EED322',
+                        '#e9d95e',
                         75000,
-                        '#E6B71E',
+                        '#e8bf53',
                         100000,
-                        '#DA9C20',
+                        '#e8a649',
                         250000,
-                        '#CA8323',
+                        '#e88c3e',
                         500000,
-                        '#B86B25',
+                        '#e77334',
                         750000,
-                        '#A25626',
+                        '#e75929',
                         1000000,
-                        '#8B4225',
+                        '#e7401f',
                         2500000,
-                        '#723122'
+                        '#bd3014'
                     ],
                           'fill-opacity': 0.75
                       },                      
@@ -298,14 +298,14 @@ return (
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
       <div id="state-legend" className="legend">
     <h4>Population</h4>
-    <div><span style={{backgroundColor: '#723122'}}></span>2,500,000</div>
-    <div><span style={{backgroundColor: '#8b4225'}}></span>1,000,000</div>
-    <div><span style={{backgroundColor: '#a25626'}}></span>750,000</div>
-    <div><span style={{backgroundColor: '#b86b25'}}></span>500,000</div>
-    <div><span style={{backgroundColor: '#ca8323'}}></span>250,000</div>
-    <div><span style={{backgroundColor: '#da9c20'}}></span>100,000</div>
-    <div><span style={{backgroundColor: '#e6b71e'}}></span>75,000</div>
-    <div><span style={{backgroundColor: '#eed322'}}></span>50,000</div>    
+    <div><span style={{backgroundColor: '#bd3014'}}></span>2,500,000</div>
+    <div><span style={{backgroundColor: '#e7401f'}}></span>1,000,000</div>
+    <div><span style={{backgroundColor: '#e75929'}}></span>750,000</div>
+    <div><span style={{backgroundColor: '#e77334'}}></span>500,000</div>
+    <div><span style={{backgroundColor: '#e88c3e'}}></span>250,000</div>
+    <div><span style={{backgroundColor: '#e8a649'}}></span>100,000</div>
+    <div><span style={{backgroundColor: '#e8bf53'}}></span>75,000</div>
+    <div><span style={{backgroundColor: '##e9d95e'}}></span>50,000</div>    
 </div>
 <div id="county-legend" className="legend" style={{display: 'none'}}>
 <h4>Case Density</h4>
