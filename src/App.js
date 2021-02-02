@@ -20,6 +20,15 @@ function App() {
   const [countyData, setCountyData]= useState([])
   const [news, setNews]=useState([])
   const [tweets, setTweets]=useState([])
+  const [hospitalized, setHospitalized] = useState(null)
+
+  useEffect(()=>{
+    if(allStatesData){     
+      const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
+      console.log(result)
+      setHospitalized(result)
+    }
+  },[allStatesData])
   
   
   const successLocation=(e)=>{
@@ -64,8 +73,7 @@ function App() {
   //once state and natData available, filter to get the state data
 
   useEffect(()=>{
-    if(state&&allStatesData){
-      console.log('setting state data')
+    if(state&&allStatesData){      
       setStateData(allStatesData.filter(e=>e.state===state)[0])     
     }    
   },[state,allStatesData])
