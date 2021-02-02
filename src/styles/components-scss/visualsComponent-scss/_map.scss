@@ -5,6 +5,7 @@
   height: $topSectionHeight;
   width: 100%;
   margin-bottom: $sectionMargin;
+  border: none;
 }
 .legend{
   font-family: $globalFontFamily;
@@ -37,11 +38,26 @@
 }
 .map-overlay{
   background-color: salmon;
-  position: relative;
   display: flex;
-  // top: 308px;
-  // bottom: 0;
+  flex-direction: column;
+  position: absolute;
+  bottom: 46vh;
   font-family: $globalFontFamily;
   border-radius: 10px;
   padding: 10px;
+  margin: 0 0 32px 4px;
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
 }
