@@ -5,7 +5,7 @@ import Tweet from './Tweet'
 
 const Twitter = (props) => {
 
-  useEffect(() => console.log(props.tweets))
+  // useEffect(() => console.log(props.tweets))
   
   return (
     <Container className='Twitter'>

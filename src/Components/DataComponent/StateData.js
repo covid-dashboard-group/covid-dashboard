@@ -13,7 +13,7 @@ const StateData = (props) => {
       axios
           .get("https://api.covidtracking.com/v1/states/current.json")
           .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               let statesData = [];
 
               let indivStates = {
@@ -29,7 +29,7 @@ const StateData = (props) => {
                   statesData[i].positiveIncrease = res.data[i].positiveIncrease;
               }
 
-              console.log(statesData);
+              // console.log(statesData);
               setFinalData(statesData);
           })
   }, [])
