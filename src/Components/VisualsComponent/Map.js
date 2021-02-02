@@ -132,23 +132,23 @@ const Map = (props) => {
               ['linear'],
               ['get', 'positive'],
               0,
-              '#e9f268',
+              '#F1EC56',
               50000,
-              '#e9d95e',
+              '#F0D04D',
               75000,
-              '#e8bf53',
+              '#EEB443',
               100000,
-              '#e8a649',
+              '#ED983A',
               250000,
-              '#e88c3e',
+              '#EC7D30',
               500000,
-              '#e77334',
+              '#EA6127',
               750000,
-              '#e75929',
+              '#E9451D',
               1000000,
-              '#e7401f',
+              '#E72914',
               2500000,
-              '#bd3014'
+              '#E60D0A'
             ],
             'fill-opacity': 0.75
           },
@@ -206,23 +206,23 @@ const Map = (props) => {
                 ['linear'],
                 ['get', 'caseDensity'],
                 0,
-                '#F2F12D',
-                10,
-                '#EED322',
-                20,
-                '#E6B71E',
-                30,
-                '#DA9C20',
-                40,
-                '#CA8323',
+                '#F1EC56',
+                25,
+                '#F0D04D',
                 50,
-                '#B86B25',
-                60,
-                '#A25626',
-                70,
-                '#8B4225',
-                90,
-                '#723122'
+                '#EEB443',
+                75,
+                '#ED983A',
+                100,
+                '#EC7D30',
+                125,
+                '#EA6127',
+                150,
+                '#E9451D',
+                175,
+                '#E72914',
+                200,
+                '#E60D0A'
               ],
               'fill-opacity': 0.75
             }
@@ -300,29 +300,31 @@ const Map = (props) => {
       <div ref={(el) => (mapContainer.current = el)} style={styles} />
       <div id="state-legend" className="legend">
         <h4>Population</h4>
-        <div><span style={{ backgroundColor: '#bd3014' }}></span>2,500,000</div>
-        <div><span style={{ backgroundColor: '#e7401f' }}></span>1,000,000</div>
-        <div><span style={{ backgroundColor: '#e75929' }}></span>750,000</div>
-        <div><span style={{ backgroundColor: '#e77334' }}></span>500,000</div>
-        <div><span style={{ backgroundColor: '#e88c3e' }}></span>250,000</div>
-        <div><span style={{ backgroundColor: '#e8a649' }}></span>100,000</div>
-        <div><span style={{ backgroundColor: '#e8bf53' }}></span>75,000</div>
-        <div><span style={{ backgroundColor: '##e9d95e' }}></span>50,000</div>
+        <div><span style={{ backgroundColor: '#E60D0A' }}></span>2,500,000</div>
+        <div><span style={{ backgroundColor: '#E72914' }}></span>1,000,000</div>
+        <div><span style={{ backgroundColor: '#E9451D' }}></span>750,000</div>
+        <div><span style={{ backgroundColor: '#EA6127' }}></span>500,000</div>
+        <div><span style={{ backgroundColor: '#EC7D30' }}></span>250,000</div>
+        <div><span style={{ backgroundColor: '#ED983A' }}></span>100,000</div>
+        <div><span style={{ backgroundColor: '#EEB443' }}></span>75,000</div>
+        <div><span style={{ backgroundColor: '#F0D04D' }}></span>50,000</div>
+        <div><span style={{ backgroundColor: '#F1EC56' }}></span>0</div>
       </div>
       <div id="county-legend" className="legend" style={{ display: 'none' }}>
         <h4>Case Density</h4>
-        <div><span style={{ backgroundColor: '#723122' }}></span>70</div>
-        <div><span style={{ backgroundColor: '#8b4225' }}></span>60</div>
-        <div><span style={{ backgroundColor: '#a25626' }}></span>50</div>
-        <div><span style={{ backgroundColor: '#b86b25' }}></span>40</div>
-        <div><span style={{ backgroundColor: '#ca8323' }}></span>30</div>
-        <div><span style={{ backgroundColor: '#da9c20' }}></span>20</div>
-        <div><span style={{ backgroundColor: '#e6b71e' }}></span>10</div>
-        <div><span style={{ backgroundColor: '#eed322' }}></span>0</div>
+        <div><span style={{ backgroundColor: '#E60D0A' }}></span>200</div>
+        <div><span style={{ backgroundColor: '#E72914' }}></span>175</div>
+        <div><span style={{ backgroundColor: '#E9451D' }}></span>150</div>
+        <div><span style={{ backgroundColor: '#EA6127' }}></span>125</div>
+        <div><span style={{ backgroundColor: '#EC7D30' }}></span>100</div>
+        <div><span style={{ backgroundColor: '#ED983A' }}></span>75</div>
+        <div><span style={{ backgroundColor: '#EEB443' }}></span>50</div>
+        <div><span style={{ backgroundColor: '#F0D04D' }}></span>25</div>
+        <div><span style={{ backgroundColor: '#F1EC56' }}></span>0</div>
       </div>
 
       <div className='map-overlay' id='features'>
-        <h5>US population density</h5>
+        <h5>US Population Density</h5>
         <div id='pd'>
           <p>Hover over a state!</p>
         </div>
