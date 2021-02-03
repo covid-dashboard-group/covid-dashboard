@@ -117,3 +117,19 @@
   margin-left: 10px;
   background: linear-gradient(45deg, hsla(33, 100%, 53%, 1) 0%, rgb(241, 236, 86) 100%);
 }
+
+.header-info-sources {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+
+  p {
+    font-size: 12px;
+    line-height: 10px;
+  }
+}
+
+.sources-modal {
+  font-family: $globalFontFamily;
+}
