@@ -37,7 +37,7 @@ const Header = (props) => {
           md={1}
           onClick={handleShow}
         >
-          <p>see info sources</p>
+          <p>About</p>
         </Col>
 
         <Col
@@ -121,10 +121,23 @@ const Header = (props) => {
 
       <Modal show={show} onHide={handleClose} className='sources-modal'>
         <Modal.Header closeButton>
-          <Modal.Title>Information Sources</Modal.Title>
+          <Modal.Title>About</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          These are all our sources
+          <h3>Information Sources</h3>
+          <p>https://covidtracking.com/data/api</p>
+          <p>https://documenter.getpostman.com/view/8854915/SzS7R6uu?version=latest</p>
+          <p>https://api.covidactnow.org/</p>
+          <p>https://newsapi.org/</p>
+          <p>https://covid-19.dataflowkit.com/</p>
+          <p>https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html</p>
+
+          <h3>Creators</h3>
+          <p>James Florea</p>
+          <p>Jeddy Hwang</p>
+          <p>Rob Graczyk</p>
+          <p>Mark Carey</p>
+
         </Modal.Body>
       </Modal>
     </Container >
