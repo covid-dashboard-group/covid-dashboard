@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ReactComponent as DashboardLogo } from '../assets/DashboardLogo.svg'
 import Graphic1 from '../assets/Graphic-1.png'
 import Graphic2 from '../assets/Graphic-2.png'
 import Graphic3 from '../assets/Graphic-3.png'
 import Graphic4 from '../assets/Graphic-4.png'
 import Graphic5 from '../assets/Graphic-5.png'
-import { Row, Container, Col } from 'react-bootstrap'
+import { Row, Container, Col, Modal, Button } from 'react-bootstrap'
 
 const Header = (props) => {
 
   // useEffect(() => console.log(props.natData))
+
+  const [show, setShow] = useState(false)
+  
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <Container fluid>
@@ -23,9 +28,11 @@ const Header = (props) => {
         </Col>
 
         <Col
-          className='header-white-space'
+          className='header-info-sources'
           md={1}
+          onClick={handleShow}
         >
+          <p>see info sources</p>
         </Col>
 
         <Col
@@ -106,6 +113,15 @@ const Header = (props) => {
         </Col>
 
       </Row >
+
+      <Modal show={show} onHide={handleClose} className='sources-modal'>
+        <Modal.Header closeButton>
+          <Modal.Title>Information Sources</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          These are all our sources
+        </Modal.Body>
+      </Modal>
     </Container >
   )
 }
