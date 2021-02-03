@@ -15,6 +15,9 @@ const Header = (props) => {
   
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
   return (
     <Container fluid>
@@ -86,7 +89,7 @@ const Header = (props) => {
             <Container
               className='header-icon-data'
             >
-              <p>{props.natData2['hospitalized']}</p>
+              <p>{(props.natData2['hospitalized'])}</p>
               <img
                 src={Graphic5}
                 className='header-graphic'
