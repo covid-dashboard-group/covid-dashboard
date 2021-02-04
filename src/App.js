@@ -23,13 +23,13 @@ function App() {
   const [hospitalized, setHospitalized] = useState(null)
   const [natData2, setNatData2]= useState({})
 
-  useEffect(()=>{
-    if(allStatesData){     
-      const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
-      // console.log(result)
-      setHospitalized(result)
-    }
-  },[allStatesData])
+  // useEffect(()=>{
+  //   if(allStatesData){     
+  //     const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
+  //     // console.log(result)
+  //     setHospitalized(result)
+  //   }
+  // },[allStatesData])
   
   
   const successLocation=(e)=>{

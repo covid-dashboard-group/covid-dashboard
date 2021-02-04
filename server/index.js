@@ -9,6 +9,8 @@ const {SERVER_PORT,SESSION_SECRET}=process.env
 
 app.use(express.json())
 
+app.use(express.static(`${__dirname}/../build`))
+
 // app.use(
 //     session({
 //         resave:false,
@@ -27,7 +29,6 @@ app.get(`/api/daily/states`, covidCtrl.getStatesDaily)
 app.get('/api/natBackup', covidCtrl.getNatBackup)
 
 app.get('/api/tweets', tweetCtrl.getCovidTweets)
-
 
 
 
