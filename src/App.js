@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 import statesAbb from './utils/statesAbb.json'
 import stateInverter from './utils/stateInverter'
 
-const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API, REACT_APP_COVID_ACT_NOW} = process.env;
+const { REACT_APP_MAPBOX_APIKEY, REACT_APP_NEWS_API, REACT_APP_COVID_ACT_NOW,REACT_APP_TIMES_NEWS} = process.env;
 
 function App() {
   const [state, setState]=useState('')
@@ -23,13 +23,13 @@ function App() {
   const [hospitalized, setHospitalized] = useState(null)
   const [natData2, setNatData2]= useState({})
 
-  useEffect(()=>{
-    if(allStatesData){     
-      const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
-      // console.log(result)
-      setHospitalized(result)
-    }
-  },[allStatesData])
+  // useEffect(()=>{
+  //   if(allStatesData){     
+  //     const result= allStatesData.reduce((a,b)=>a+b['hospitalized']||b['hospitalizedCumulative']||b['hospitalizedCurrently'],0)
+  //     // console.log(result)
+  //     setHospitalized(result)
+  //   }
+  // },[allStatesData])
   
   
   const successLocation=(e)=>{
@@ -95,8 +95,41 @@ function App() {
   const getNationalNews = () => {
     axios.get(`https://newsapi.org/v2/everything?q=COVID United States&sortBy=publishedAt&apiKey=${REACT_APP_NEWS_API}&pageSize=20&page=1`)
       .then(res => setNews(res.data))
-      .catch(e => console.log(e))
+      .catch(e => {
+        console.log(e)
+        axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid-19 united states&api-key=${REACT_APP_TIMES_NEWS}`)
+    .then(res=>{
+      console.log(res.data)
+      let results ={
+        articles:
+       res.data.response.docs.map(e=>({
+        source:{name:'https://www.nytimes.com/'},
+        title:e.abstract,
+        url:e.web_url,
+        urlToImage:'https://www.nytimes.com/'+e.multimedia[0].url,
+        publishedAt:e.pub_date
+      })   
+      ) 
+    }
+      setNews(results)
+      })
+  })
   }
+  //times
+
+  // const getTimesNews = ()=> {
+  //   axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid-19 united states&api-key=${REACT_APP_TIMES_NEWS}`)
+  //   .then(res=>{
+  //     let results = res.data.response.docs.map(e=>({
+  //       title:e.abstract,
+  //       url:e.web_url,
+  //       urlToImage:'https://www.nytimes.com/'+e.multimedia[0].url,
+  //       publishedAt:e.pub_date
+  //     })
+
+  //     )
+  //   })
+  // }
   //twitter
   
   useEffect(()=>{
@@ -110,6 +143,7 @@ function App() {
     .then(res=>setCountyData(res.data))
     .catch(e=>console.log(e))
   },[])
+
 
   return (
     <div className="App">
