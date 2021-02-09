@@ -2,6 +2,7 @@ require('dotenv').config()
 const { default: axios } = require('axios')
 const express = require('express')
 const session = require('express-session')
+const covidRichData = require('./controllers/covidRichData')
 const covidCtrl = require('./controllers/covidTrackingProject')
 const tweetCtrl = require('./controllers/twitterControl')
 const app = express()
@@ -30,7 +31,7 @@ app.get('/api/natBackup', covidCtrl.getNatBackup)
 
 app.get('/api/tweets', tweetCtrl.getCovidTweets)
 
-
+app.get('/api/timesnews', covidRichData.getTimes)
 
 app.listen(SERVER_PORT, ()=>{
     console.log(`Serving on port ${SERVER_PORT}`)

@@ -1,23 +1,20 @@
 const axios= require('axios')
 
 module.exports={
-    getCasesOverTime:async(req,res)=>{
-        console.log('getting state daily')
-        //if this endpoint is hit again, provide last session data
-        if(req.session.data){
-            console.log('session already exists')
-            return res.status(200).send(req.session.statesDaily)
-
-        }
-        //CASES OVER TIME IN THE US 
-        else{
-            console.log('Fetching data...')
-            await axios.get(`https://covid19.richdataservices.com/rds/api/query/int/jhu_country/select?cols=date_stamp,cnt_confirmed,cnt_death,cnt_recovered&where=(iso3166_1=US)&format=amcharts&limit=5000`)
-             .then(res=>{
-                 req.session.statesDaily=res.data
-                })
-                .catch(e=>console.log(e))                
-                return res.status(200).send(req.session.statesDaily)
-        }
-    }
+    getTimes:async(req,res)=>{
+        axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid-19 united states&api-key=${REACT_APP_TIMES_NEWS}`)
+    .then(res=>{
+      console.log(res.data)
+      let results = res.data.response.docs.map(e=>({
+        source:{name:'https://www.nytimes.com/'},
+        title:e.abstract,
+        url:e.web_url,
+        urlToImage:'https://www.nytimes.com/'+e.multimedia[0].url,
+        publishedAt:e.pub_date
+      })
+      )
+      return res.status(200).send(results)
+    })
+}
+    
 }
